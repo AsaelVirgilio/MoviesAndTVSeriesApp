@@ -15,28 +15,35 @@ final class MoviesListCoordinator: CoordinatorType {
     
     var navigationController: NavigationType
     private var factory: MoviesListFactoryType
-    private weak var delegate: MoviesListCoordinatorDelegate?
-    
+    private weak var parentCoordinator: ParentCoordinator?
+    var childCoordinators: [CoordinatorType] = []
     
     init(navigation: NavigationType,
          moviesFactory: MoviesListFactoryType,
-         delegate: MoviesListCoordinatorDelegate?
+         parentCoordinator: ParentCoordinator
     ) {
         self.navigationController = navigation
         self.factory = moviesFactory
-        self.delegate = delegate
+        self.parentCoordinator = parentCoordinator
     }
     
     func start() {
         let controller = factory.makeMoviesListModule(coordinator: self)
-        navigationController.viewControllers = [controller]
+        navigationController.pushViewController(controller, animated: true) {
+            [weak self] in
+            guard let self = self else { return }
+            self.parentCoordinator?.removeChildCoordinator(self)
+        }
     }
 }
 
 extension MoviesListCoordinator: MoviesViewControllerCoordinator {
-    func didSelectCell(model: ItemMoviesViewModel) {
-        print("-----> Goto detail with this model \(model)")
-//        navigationController.pushViewController(factory.makeMoviesListModule(coordinator: self), animated: true)
+    
+    func didSelectCell(movie: Movie) {
+        let movieDetailCoordinator = factory.makeMovieDetailCoordinator(navigation: navigationController, movie: movie, parentCoordinator: self)
+        addChildCoordinatorStar(movieDetailCoordinator)
     }
     
 }
+
+extension MoviesListCoordinator: ParentCoordinator {}

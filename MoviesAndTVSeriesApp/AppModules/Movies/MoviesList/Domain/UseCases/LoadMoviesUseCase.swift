@@ -14,6 +14,7 @@ protocol LoadMoviesUseCaseType {
 struct LoadMoviesUseCase: LoadMoviesUseCaseType {
     private var moviesRepository: MoviesRepositoryType
     private var pageNum: Int
+    var repositoryResult: [Movie] = []
     
     init(moviesRepository: MoviesRepositoryType,
          pageNum: Int
@@ -25,7 +26,14 @@ struct LoadMoviesUseCase: LoadMoviesUseCaseType {
     mutating func execute() async -> Result<[Movie], Error> {
         do {
             pageNum += 1
-            let repositoryResult = try await moviesRepository.fetchFilteredMovies(pageNum: pageNum)
+            repositoryResult = try await moviesRepository.fetchFilteredMovies(pageNum: pageNum)
+            
+            while repositoryResult.count < 5 {
+                pageNum += 1
+                repositoryResult = try await moviesRepository.fetchFilteredMovies(pageNum: pageNum)
+            }
+            
+            
             return .success(repositoryResult)
         }catch {
             return .failure(error)

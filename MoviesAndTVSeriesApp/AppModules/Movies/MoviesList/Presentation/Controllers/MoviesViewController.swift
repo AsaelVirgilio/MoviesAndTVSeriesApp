@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 protocol MoviesViewControllerCoordinator {
-    func didSelectCell(model: ItemMoviesViewModel)
+    func didSelectCell(movie: Movie)
 }
 
 final class MoviesViewController: UITableViewController {
@@ -94,7 +94,7 @@ extension MoviesViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = viewModel.getItemMoviesViewModel(row: indexPath.row)
-        coordinator.didSelectCell(model: model)
+        let movie = viewModel.getMovieViewModel(row: indexPath.row)
+        coordinator.didSelectCell(movie: movie)
     }
 }

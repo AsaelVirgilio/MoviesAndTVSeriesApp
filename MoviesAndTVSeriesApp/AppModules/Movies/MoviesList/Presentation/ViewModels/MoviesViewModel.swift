@@ -11,6 +11,7 @@ protocol MoviesViewModelType: BaseViewModelType {
     var itemsMoviesCount: Int { get }
     var lastPage: Bool { get }
     func getItemMoviesViewModel(row: Int) -> ItemMoviesViewModel
+    func getMovieViewModel(row: Int) -> Movie
 }
 
 final class MoviesViewModel: MoviesViewModelType {
@@ -67,6 +68,10 @@ final class MoviesViewModel: MoviesViewModelType {
     func getItemMoviesViewModel(row: Int) -> ItemMoviesViewModel {
         checkAndLoadMoreMovies(row: row)
         return makeItemMoviesViewModel(row: row)
+    }
+    
+    func getMovieViewModel(row: Int) -> Movie {
+        movies[row]
     }
     
     private func makeItemMoviesViewModel(row: Int) -> ItemMoviesViewModel {

@@ -11,8 +11,9 @@ import Combine
 protocol MoviesMenuFactoryType {
     func makeModule(coordinator: MoviesMenuViewControllerCoordinator) -> UIViewController
     func makeTabBarItem(navigation: NavigationType)
-//    func makeMoviesListViewController() -> UIViewController
-    func makeMoviesListCoordinator(delegate: MoviesListCoordinatorDelegate, genre: ItemMoviesGenresViewModel) -> CoordinatorType
+    func makeMoviesListCoordinator(navigation: NavigationType,
+                                   genre: ItemMoviesGenresViewModel,
+                                   parentCoordinator: ParentCoordinator) -> CoordinatorType
 }
 
 struct MoviesMenuFactory: MoviesMenuFactoryType, ItemHomeMenuFactory {
@@ -49,17 +50,15 @@ struct MoviesMenuFactory: MoviesMenuFactoryType, ItemHomeMenuFactory {
         )
     }
     
-//    func makeMoviesListViewController() -> UIViewController {
-    func makeMoviesListCoordinator(delegate: MoviesListCoordinatorDelegate,
-                                   genre: ItemMoviesGenresViewModel) -> CoordinatorType
+    func makeMoviesListCoordinator(navigation: NavigationType,
+                                   genre: ItemMoviesGenresViewModel,
+                                   parentCoordinator: ParentCoordinator) -> CoordinatorType
     {
         
         let factory = MoviesListFactory(pageNum: 1, itemMoviesGenresViewModel: genre)
-        let navigationController = UINavigationController()
-        let navigation = Navigation(rootViewController: navigationController)
         return MoviesListCoordinator(navigation: navigation,
                                      moviesFactory: factory,
-                                     delegate: delegate)
+                                     parentCoordinator: parentCoordinator)
     }
 }
 

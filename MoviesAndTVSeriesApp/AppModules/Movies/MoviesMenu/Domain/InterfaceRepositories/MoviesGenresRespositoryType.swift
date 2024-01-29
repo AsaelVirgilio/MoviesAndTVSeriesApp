@@ -6,5 +6,5 @@
 //
 
 protocol MoviesGenresRespositoryType {
-    func fetchMovies() async throws -> MoviesGenresDTO
+    func fetchMovies() async throws -> [MGenre]
 }

@@ -24,7 +24,8 @@ struct ItemMoviesViewModel {
     }
     
     var posterPath: String {
-        "https://image.tmdb.org/t/p/w500" + movie.posterPath
+        let posterPath = movie.posterPath ?? ""
+        return "https://image.tmdb.org/t/p/w500" + posterPath
     }
     
     var imageData: Data? {

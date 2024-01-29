@@ -23,10 +23,10 @@ struct MoviesDTO: Codable {
 // MARK: - Result
 struct Movie: Codable {
     let adult: Bool
-    let backdropPath: String
+    let backdropPath: String?
     let id: Int
     let title, originalTitle, overview: String
-    let posterPath: String
+    let posterPath: String?
     let genreIDS: [Int]
     let releaseDate: String
     let voteAverage: Double

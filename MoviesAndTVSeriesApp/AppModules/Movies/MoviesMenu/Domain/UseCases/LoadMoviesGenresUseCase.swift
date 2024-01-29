@@ -21,7 +21,7 @@ struct LoadMoviesGenresUseCase: LoadMoviesGenresUseCaseType {
     func execute() async -> Result<[MGenre], Error> {
         do {
             let result = try await moviesGenresRepository.fetchMovies()
-            return .success(result.genres)
+            return .success(result)
         } catch {
             return .failure(error)
         }

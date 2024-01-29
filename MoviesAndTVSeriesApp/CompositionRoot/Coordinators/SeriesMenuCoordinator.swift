@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol SeriesMenuCoordinatorType {
-    
-}
 
 final class SeriesMenuCoordinator: CoordinatorType {
     var navigationController: NavigationType

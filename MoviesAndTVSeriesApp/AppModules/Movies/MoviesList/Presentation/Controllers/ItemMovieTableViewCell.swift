@@ -82,7 +82,7 @@ final class ItemMovieTableViewCell: UITableViewCell {
     }
     
     private func configUI() {
-        
+        selectionStyle = .none
         let margins = layoutMarginsGuide
         
         addSubview(mainContainer)

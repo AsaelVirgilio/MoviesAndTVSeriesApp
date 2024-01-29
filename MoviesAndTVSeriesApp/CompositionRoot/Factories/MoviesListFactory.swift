@@ -10,6 +10,9 @@ import Combine
 
 protocol MoviesListFactoryType {
     func makeMoviesListModule(coordinator: MoviesViewControllerCoordinator) -> UIViewController
+    func makeMovieDetailCoordinator(navigation: NavigationType,
+                                    movie: Movie,
+                                    parentCoordinator: ParentCoordinator) -> CoordinatorType
 }
 
 struct MoviesListFactory: ItemHomeMenuFactory, MoviesListFactoryType {
@@ -43,6 +46,15 @@ struct MoviesListFactory: ItemHomeMenuFactory, MoviesListFactoryType {
         let controller = MoviesViewController(viewModel: moviesViewModel, coordinator: coordinator)
         controller.title = "\(itemMoviesGenresViewModel.name)"
         return controller
+    }
+    
+    func makeMovieDetailCoordinator(navigation: NavigationType, movie: Movie, parentCoordinator: ParentCoordinator) -> CoordinatorType {
+        
+        let factory = MovieDetailFactory(movie: movie)
+        
+        return MovieDetailCoordinator(navigationController: navigation,
+                                      factoryDetail: factory,
+                                      parentCoordinator: parentCoordinator)
     }
 
 }

@@ -24,8 +24,7 @@ struct ItemMoviesViewModel {
     }
     
     var posterPath: String {
-        let posterPath = movie.posterPath ?? ""
-        return "https://image.tmdb.org/t/p/w500" + posterPath
+        AppLocalized.imagesURLPath(path: movie.posterPath ?? "")
     }
     
     var imageData: Data? {

@@ -8,9 +8,7 @@
 import Combine
 import UIKit
 
-protocol MovieDetailViewControllerCoordinator: VideoTrailerViewControllerCoordinator {
-    func didSelectPersonCell(idPerson: Int)
-}
+protocol MovieDetailViewControllerCoordinator: VideoTrailerViewControllerCoordinator, CastViewControllerCoordinator {}
 
 final class MovieDetailViewController: UIViewController {
     //MARK: - Public Properties
@@ -20,6 +18,7 @@ final class MovieDetailViewController: UIViewController {
     private let coordinator: MovieDetailViewControllerCoordinator
     private var cancellable = Set<AnyCancellable>()
     private let videoTrailerViewController: VideoTrailerViewController
+    private let castViewController: CastViewController
     
     
     
@@ -65,7 +64,9 @@ final class MovieDetailViewController: UIViewController {
     
     private let movieImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.setRoundedCorners()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -85,11 +86,13 @@ final class MovieDetailViewController: UIViewController {
     
     init(videoTrailerViewController: VideoTrailerViewController,
          viewModel: MovieDetailViewModelType,
-         coordinator: MovieDetailViewControllerCoordinator
+         coordinator: MovieDetailViewControllerCoordinator,
+         castViewController: CastViewController
     ) {
         self.videoTrailerViewController = videoTrailerViewController
         self.viewModel = viewModel
         self.coordinator = coordinator
+        self.castViewController = castViewController
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -107,8 +110,9 @@ final class MovieDetailViewController: UIViewController {
     //MARK: - Helpers
     private func configUserInterface() {
         view.backgroundColor = .systemBackground
-        let margins = view.layoutMarginsGuide
+//        let margins = view.layoutMarginsGuide
         videoTrailerViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        castViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerView)
         headerView.addSubview(headerTitle)
         
@@ -150,9 +154,11 @@ final class MovieDetailViewController: UIViewController {
             
             videoTrailerViewController.view.heightAnchor.constraint(equalToConstant: 300),
             
+            castViewController.view.heightAnchor.constraint(equalToConstant: 300),
+            
         ])
         
-        [movieImage, movieOverview, videoTrailerViewController.view].forEach { mainStack.addArrangedSubview($0)}
+        [movieImage, movieOverview, videoTrailerViewController.view, castViewController.view].forEach { mainStack.addArrangedSubview($0)}
         
     }
     private func stateController() {

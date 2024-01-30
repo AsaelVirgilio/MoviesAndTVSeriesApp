@@ -41,7 +41,7 @@ final class VideoTrailerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
-        player.delegate = self
+//        player.delegate = self
         viewModel.viewDidLoad()
         configUserInterface()
         stateController()

@@ -645,7 +645,7 @@
 				DEVELOPMENT_TEAM = N84Q72KK52;
 				IBSC_MODULE = youtube_ios_player_helper_swift;
 				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper-swift/ResourceBundle-youtube-ios-player-helper-swift-youtube-ios-player-helper-swift-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				PRODUCT_NAME = "youtube-ios-player-helper-swift";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -662,7 +662,7 @@
 				DEVELOPMENT_TEAM = N84Q72KK52;
 				IBSC_MODULE = youtube_ios_player_helper_swift;
 				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper-swift/ResourceBundle-youtube-ios-player-helper-swift-youtube-ios-player-helper-swift-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				PRODUCT_NAME = "youtube-ios-player-helper-swift";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

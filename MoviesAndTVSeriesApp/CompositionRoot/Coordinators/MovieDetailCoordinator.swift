@@ -15,6 +15,7 @@ final class MovieDetailCoordinator: CoordinatorType {
     var navigationController: NavigationType
     private var factoryDetail: MovieDetailFactoryType
     private weak var parentCoordinator: ParentCoordinator?
+    var childCoordinators: [CoordinatorType] = []
     
     init(navigationController: NavigationType,
          factoryDetail: MovieDetailFactoryType,
@@ -38,15 +39,22 @@ final class MovieDetailCoordinator: CoordinatorType {
 }
 
 extension MovieDetailCoordinator: MovieDetailViewControllerCoordinator {
-    func didSelectPersonCell(idPerson: Int) {
-        print("Person selected")
-    }
 
-}
-
-extension MovieDetailCoordinator: VideoTrailerViewControllerCoordinator {
+    //MARK: - VideoTrailerViewControllerCoordinator
     func didSelectExit() {
         print("Exit detail")
     }
     
+    //MARK: - CastViewControllerCoordinator
+    func didSelectPersonCell(itemCastViewModel: ItemCastViewModel) {
+        print("Person selected \(itemCastViewModel.originalName)")
+        let moviesPersonCoordinator = factoryDetail.makeMoviesPersonDetailCoordinator(
+            navigation: navigationController,
+            itemCastViewModel: itemCastViewModel,
+            coordinator: self
+        )
+        addChildCoordinatorStar(moviesPersonCoordinator)
+    }
 }
+
+extension MovieDetailCoordinator: ParentCoordinator {}

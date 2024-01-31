@@ -22,5 +22,12 @@ struct AppLocalized {
     static let seriesTapTitle = "TV Series"
     static let moviesTapIcon = "camara_2x"
     static let seriesTapIcon = "television_2x"
+    
+    static func imagesURLPath(path: String) -> String {
+        "https://image.tmdb.org/t/p/w500\(path)"
+    }
+    static func videosPath(key: String) -> String {
+        "https://www.youtube.com/watch?v=\(key)"
+    }
 }
 

@@ -7,13 +7,8 @@
 
 import UIKit
 
-//protocol HomeMenuFactoryType {
-//    func makeModule(coordinator: HomeMenuControllerCoordinator) -> UIViewController
-//}
-
 struct HomeMenuFactory {
     
-//    let user: UserDTO
     let appDIContainer: AppDIContainer?
     
     func makeHomeMenuController() -> UITabBarController {
@@ -21,17 +16,14 @@ struct HomeMenuFactory {
         return homeMenuController
     }
     
-    func makeChildCoordinators(delegate: MoviesMenuCoordinatorDelegate) -> [CoordinatorType] {
-      let moviesMenuCoordinator = makeMoviesMenuCoordinator(delegate: delegate)
-      let seriesMenuCoordinator = makeSeriesMenuCoordinator()
-//      let myPostCoordinator = makeMyPostCoordinator()
-//      let homeCoordinator = makeHomeCoordinator()
-      
-      return [moviesMenuCoordinator, seriesMenuCoordinator]
+    func makeChildCoordinators() -> [CoordinatorType] {
+        let moviesMenuCoordinator = makeMoviesMenuCoordinator()
+        let seriesMenuCoordinator = makeSeriesMenuCoordinator()
+        
+        return [moviesMenuCoordinator, seriesMenuCoordinator]
     }
     
-    func makeMoviesMenuCoordinator(delegate: MoviesMenuCoordinatorDelegate) -> CoordinatorType {
-        
+    func makeMoviesMenuCoordinator() -> CoordinatorType {
         let moviesMenuFactory = MoviesMenuFactory(appDIContainer: appDIContainer)
         let navigation = Navigation(rootViewController: UINavigationController())
         return MoviesMenuCoordinator(navigationController: navigation, moviesMenuFactory: moviesMenuFactory)

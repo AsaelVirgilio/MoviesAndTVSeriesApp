@@ -13,14 +13,12 @@ extension ItemHomeMenuFactory {
   func makeItemHomeMenu(
     navigation: NavigationType,
     title: String,
-    image: String,
-    selectedImage: String
+    image: String
   ) {
-  
     let tabBarItem = UITabBarItem(
       title: title,
       image: UIImage(named: image),
-      selectedImage: UIImage(systemName: selectedImage))
+      tag: 0)
     
     navigation.rootViewController.tabBarItem = tabBarItem
   }

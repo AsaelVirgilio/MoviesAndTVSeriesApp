@@ -11,20 +11,24 @@ import Combine
 protocol MoviesMenuFactoryType {
     func makeModule(coordinator: MoviesMenuViewControllerCoordinator) -> UIViewController
     func makeTabBarItem(navigation: NavigationType)
+    func makeMoviesListCoordinator(navigation: NavigationType,
+                                   genre: ItemMoviesGenresViewModel,
+                                   parentCoordinator: ParentCoordinator) -> CoordinatorType
 }
 
-struct MoviesMenuFactory: MoviesMenuFactoryType {
+struct MoviesMenuFactory: MoviesMenuFactoryType, ItemHomeMenuFactory {
     let appDIContainer: AppDIContainer?
     
     func makeModule(coordinator: MoviesMenuViewControllerCoordinator) -> UIViewController {
         let state = PassthroughSubject<StateController, Never>()
-        let url = PathLocalized.createURL(path: .moviesGenres, id: "")
+        let url = PathLocalized.createURL(path: .moviesGenres)
         
         let aPIClientService = APIClientService()
         let moviesGenresRespository = MoviesGenresRepository(remoteService: aPIClientService, url: url)
         let loadMoviesGenresUseCase = LoadMoviesGenresUseCase(moviesGenresRepository: moviesGenresRespository)
         let moviesGenresViewModel = MoviesGenresViewModel(loadMoviesGenreUseCase: loadMoviesGenresUseCase, state: state)
-        let controller = MoviesMenuViewController(collectionViewLayout: makeLayout(), viewModel: moviesGenresViewModel, coordinator: self)
+        let controller = MoviesMenuViewController(collectionViewLayout: makeLayout(), viewModel: moviesGenresViewModel, coordinator: coordinator)
+
         controller.title = AppLocalized.moviesTapTitle
         return controller
     }
@@ -41,16 +45,22 @@ struct MoviesMenuFactory: MoviesMenuFactoryType {
     }
     
     func makeTabBarItem(navigation: NavigationType) {
-        makeItemHomeMenu(navigation: navigation, title: AppLocalized.moviesTapTitle, image: AppLocalized.moviesTapIcon, selectedImage: "")
+        makeItemHomeMenu(navigation: navigation,
+                         title: AppLocalized.moviesTapTitle,
+                         image: AppLocalized.moviesTapIcon
+        )
+    }
+    
+    func makeMoviesListCoordinator(navigation: NavigationType,
+                                   genre: ItemMoviesGenresViewModel,
+                                   parentCoordinator: ParentCoordinator) -> CoordinatorType
+    {
+        
+        let factory = MoviesListFactory(pageNum: 1, itemMoviesGenresViewModel: genre)
+        return MoviesListCoordinator(navigation: navigation,
+                                     moviesFactory: factory,
+                                     parentCoordinator: parentCoordinator)
     }
 }
 
-extension MoviesMenuFactory: MoviesMenuViewControllerCoordinator {
-    func selectedMovieGenreCell(genre: ItemMoviesGenresViewModel) {
-        print("-----> Genre selected \(genre)")
-    }
-    
-    
-}
-extension MoviesMenuFactory: ItemHomeMenuFactory{}
 

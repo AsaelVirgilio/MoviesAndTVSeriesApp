@@ -32,7 +32,7 @@ final class HomeMenuCoordinator: CoordinatorType {
         navigationController.pushViewController(controller, animated: false)
         navigationController.navigationBar.isHidden = true
         
-        childCoordinators = homeMenuFactory.makeChildCoordinators(delegate: self)
+        childCoordinators = homeMenuFactory.makeChildCoordinators()
         let childNavigation = childCoordinators.map {
             $0.navigationController.rootViewController
         }
@@ -42,10 +42,3 @@ final class HomeMenuCoordinator: CoordinatorType {
     }
 }
 
-extension HomeMenuCoordinator: MoviesMenuCoordinatorDelegate {
-    func didTapLoguot() {
-        print("-----> Salida de MoviesMenuCoordinator")
-    }
-    
-    
-}

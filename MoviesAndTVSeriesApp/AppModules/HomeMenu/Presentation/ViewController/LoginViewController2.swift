@@ -37,7 +37,7 @@ final class LoginViewController2: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         player.delegate = self
-        _ = player.load(videoId: "NmVHEEogDII", playerVars: ["playsinline": "1"])
+        _ = player.load(videoId: "ZaTUatY-UoU", playerVars: ["playsinline": "1"])
         configUserInterface()
     }
     

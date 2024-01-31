@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-protocol PersonDetailViewControllerCoordinator {
+protocol PersonDetailViewControllerCoordinator: PhotosPersonViewControllerCoordinator {
     
 }
 
@@ -19,6 +19,7 @@ final class PersonDetailViewController: UIViewController {
     private let viewModel: PersonDetailViewModelType
     private var cancellable = Set<AnyCancellable>()
     private let coordinator: PersonDetailViewControllerCoordinator
+    private var photosViewController: PhotosPersonViewController
     
     
     private let scrollView: UIScrollView = {
@@ -59,11 +60,13 @@ final class PersonDetailViewController: UIViewController {
         return label
     }()
     
-    init(viewModel: PersonDetailViewModelType,
+    init(photosViewController: PhotosPersonViewController,
+         viewModel: PersonDetailViewModelType,
          coordinator: PersonDetailViewControllerCoordinator
     ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
+        self.photosViewController = photosViewController
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -103,10 +106,10 @@ final class PersonDetailViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         let margins = view.layoutMarginsGuide
-        //        photosViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        photosViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
         scrollView.addSubview(viewContainer)
-        //        viewContainer.addSubview(photosViewController.view)
+        viewContainer.addSubview(photosViewController.view)
         viewContainer.addSubview(mainStack)
         
         NSLayoutConstraint.activate([
@@ -123,15 +126,13 @@ final class PersonDetailViewController: UIViewController {
             viewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             viewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            //            photosViewController.view.topAnchor.constraint(equalTo: viewContainer.topAnchor),
-            //            photosViewController.view.leftAnchor.constraint(equalTo: viewContainer.leftAnchor),
-            //            photosViewController.view.rightAnchor.constraint(equalTo: viewContainer.rightAnchor),
-            //            photosViewController.view.heightAnchor.constraint(equalToConstant: 200),
-            //            photosViewController.view.widthAnchor.constraint(equalToConstant: 300),
+            photosViewController.view.topAnchor.constraint(equalTo: viewContainer.topAnchor),
+            photosViewController.view.leftAnchor.constraint(equalTo: viewContainer.leftAnchor),
+            photosViewController.view.rightAnchor.constraint(equalTo: viewContainer.rightAnchor),
+            photosViewController.view.heightAnchor.constraint(equalToConstant: 200),
+            photosViewController.view.widthAnchor.constraint(equalToConstant: 300),
             
-            
-            //            mainStack.topAnchor.constraint(equalTo: photosViewController.view.bottomAnchor, constant: 20),
-            mainStack.topAnchor.constraint(equalTo: viewContainer.topAnchor, constant: 20),
+            mainStack.topAnchor.constraint(equalTo: photosViewController.view.bottomAnchor, constant: 20),
             mainStack.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor),
             mainStack.trailingAnchor.constraint(equalTo: viewContainer.trailingAnchor, constant: -30),
             mainStack.bottomAnchor.constraint(equalTo: viewContainer.bottomAnchor),
@@ -150,11 +151,10 @@ final class PersonDetailViewController: UIViewController {
     private func updateUI() {
         
         let person = viewModel.personDetail
-        print("----> person view controller \(person)")
         let birthDay = DateFormater.formatDate(date: person?.birthday ?? "") + ", " + (person?.placeOfBirth ?? "")
         self.birthdayAndPlaceOfBirthPerson.text =  "BirthDay: \(birthDay)"
         self.biographyPerson.text = "Biography: \(person?.biography ?? "")"
-//        coordinator.showedView(actor: person)
+        //        coordinator.showedView(actor: person)
     }
     
 }

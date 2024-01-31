@@ -76,8 +76,9 @@ final class VideoTrailerViewController: UIViewController {
                 switch videos {
                 case .success:
                     self.loadVideo()
+                    print("------> Loaded VIdeo......")
                 case .loading:
-                    print("Waiting......")
+                    print("------> Waiting for video......")
                 case .fail(error: let error):
                     print("------> Video Error \(error)")
                 }
@@ -89,7 +90,7 @@ final class VideoTrailerViewController: UIViewController {
     
     private func loadVideo() {
         let video = viewModel.getItemVideoViewModel(row: 0)
-        _ = player.load(videoId: video.key, playerVars: ["playsinline": "1"])
+        _ = player.load(videoId: video.key, playerVars: ["playsinline": "0"])
     }
     
 }

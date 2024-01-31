@@ -36,5 +36,8 @@ final class MoviesPersonDetailCoordinator: CoordinatorType{
 }
 
 extension MoviesPersonDetailCoordinator: PersonDetailViewControllerCoordinator {
+    func didSelectPhoto(photoPath: String) {
+        print("----> Photo Selected \(photoPath)")
+    }
     
 }

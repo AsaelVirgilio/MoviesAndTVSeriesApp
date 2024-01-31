@@ -72,6 +72,15 @@
 		F00BFAC92B688477003A7AFB /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFAC82B688477003A7AFB /* PersonDetailViewController.swift */; };
 		F00BFACB2B688C67003A7AFB /* MoviesPersonDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFACA2B688C67003A7AFB /* MoviesPersonDetailFactory.swift */; };
 		F00BFACD2B688F1C003A7AFB /* MoviesPersonDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFACC2B688F1C003A7AFB /* MoviesPersonDetailCoordinator.swift */; };
+		F00BFAD92B69CA5B003A7AFB /* PhotosPersonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFAD82B69CA5B003A7AFB /* PhotosPersonDTO.swift */; };
+		F00BFADB2B69CB27003A7AFB /* PhotosPersonDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFADA2B69CB27003A7AFB /* PhotosPersonDTO+Mapping.swift */; };
+		F00BFADD2B69CD8D003A7AFB /* PhotosPersonRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFADC2B69CD8D003A7AFB /* PhotosPersonRepositoryType.swift */; };
+		F00BFADF2B69CDF3003A7AFB /* PhotosPersonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFADE2B69CDF3003A7AFB /* PhotosPersonRepository.swift */; };
+		F00BFAE12B69D5C7003A7AFB /* LoadPhotosPersonUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFAE02B69D5C7003A7AFB /* LoadPhotosPersonUseCase.swift */; };
+		F00BFAE32B69D73C003A7AFB /* PhotosPersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFAE22B69D73C003A7AFB /* PhotosPersonViewModel.swift */; };
+		F00BFAE52B69D748003A7AFB /* ItemPhotosPersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFAE42B69D748003A7AFB /* ItemPhotosPersonViewModel.swift */; };
+		F00BFAE72B69DE93003A7AFB /* PhotosPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFAE62B69DE93003A7AFB /* PhotosPersonViewController.swift */; };
+		F00BFAEA2B69FE54003A7AFB /* PhotosPersonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00BFAE92B69FE54003A7AFB /* PhotosPersonCollectionCell.swift */; };
 		F0A867022B5985E900801F89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A867012B5985E900801F89 /* AppDelegate.swift */; };
 		F0A867042B5985E900801F89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A867032B5985E900801F89 /* SceneDelegate.swift */; };
 		F0A867062B5985E900801F89 /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A867052B5985E900801F89 /* LoginViewController2.swift */; };
@@ -223,6 +232,15 @@
 		F00BFAC82B688477003A7AFB /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
 		F00BFACA2B688C67003A7AFB /* MoviesPersonDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPersonDetailFactory.swift; sourceTree = "<group>"; };
 		F00BFACC2B688F1C003A7AFB /* MoviesPersonDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPersonDetailCoordinator.swift; sourceTree = "<group>"; };
+		F00BFAD82B69CA5B003A7AFB /* PhotosPersonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPersonDTO.swift; sourceTree = "<group>"; };
+		F00BFADA2B69CB27003A7AFB /* PhotosPersonDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotosPersonDTO+Mapping.swift"; sourceTree = "<group>"; };
+		F00BFADC2B69CD8D003A7AFB /* PhotosPersonRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPersonRepositoryType.swift; sourceTree = "<group>"; };
+		F00BFADE2B69CDF3003A7AFB /* PhotosPersonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPersonRepository.swift; sourceTree = "<group>"; };
+		F00BFAE02B69D5C7003A7AFB /* LoadPhotosPersonUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPhotosPersonUseCase.swift; sourceTree = "<group>"; };
+		F00BFAE22B69D73C003A7AFB /* PhotosPersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPersonViewModel.swift; sourceTree = "<group>"; };
+		F00BFAE42B69D748003A7AFB /* ItemPhotosPersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPhotosPersonViewModel.swift; sourceTree = "<group>"; };
+		F00BFAE62B69DE93003A7AFB /* PhotosPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPersonViewController.swift; sourceTree = "<group>"; };
+		F00BFAE92B69FE54003A7AFB /* PhotosPersonCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPersonCollectionCell.swift; sourceTree = "<group>"; };
 		F0A866FE2B5985E900801F89 /* MoviesAndTVSeriesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesAndTVSeriesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A867012B5985E900801F89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0A867032B5985E900801F89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -827,6 +845,102 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		F00BFACE2B69C9C3003A7AFB /* PhotoPersonModule */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFAD12B69C9E1003A7AFB /* Presentation */,
+				F00BFAD02B69C9D9003A7AFB /* Domain */,
+				F00BFACF2B69C9D3003A7AFB /* Data */,
+			);
+			path = PhotoPersonModule;
+			sourceTree = "<group>";
+		};
+		F00BFACF2B69C9D3003A7AFB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFAD32B69C9F6003A7AFB /* Repository */,
+				F00BFAD22B69C9F0003A7AFB /* DTO */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F00BFAD02B69C9D9003A7AFB /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFAD52B69CA14003A7AFB /* UseCases */,
+				F00BFAD42B69CA00003A7AFB /* RepositoryInterface */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F00BFAD12B69C9E1003A7AFB /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFAD72B69CA42003A7AFB /* ViewController */,
+				F00BFAD62B69CA21003A7AFB /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F00BFAD22B69C9F0003A7AFB /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFAD82B69CA5B003A7AFB /* PhotosPersonDTO.swift */,
+				F00BFADA2B69CB27003A7AFB /* PhotosPersonDTO+Mapping.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		F00BFAD32B69C9F6003A7AFB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFADE2B69CDF3003A7AFB /* PhotosPersonRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F00BFAD42B69CA00003A7AFB /* RepositoryInterface */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFADC2B69CD8D003A7AFB /* PhotosPersonRepositoryType.swift */,
+			);
+			path = RepositoryInterface;
+			sourceTree = "<group>";
+		};
+		F00BFAD52B69CA14003A7AFB /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFAE02B69D5C7003A7AFB /* LoadPhotosPersonUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		F00BFAD62B69CA21003A7AFB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFAE22B69D73C003A7AFB /* PhotosPersonViewModel.swift */,
+				F00BFAE42B69D748003A7AFB /* ItemPhotosPersonViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F00BFAD72B69CA42003A7AFB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFAE82B69FE22003A7AFB /* Cell */,
+				F00BFAE62B69DE93003A7AFB /* PhotosPersonViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F00BFAE82B69FE22003A7AFB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F00BFAE92B69FE54003A7AFB /* PhotosPersonCollectionCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		F0A866F52B5985E900801F89 = {
 			isa = PBXGroup;
 			children = (
@@ -1175,6 +1289,7 @@
 		F0A867762B5AC6FB00801F89 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F00BFACE2B69C9C3003A7AFB /* PhotoPersonModule */,
 				F00BFAB02B686A1E003A7AFB /* PersonDetailModule */,
 				F00BFA942B681F5F003A7AFB /* CastModule */,
 				F00BFA792B66C9AE003A7AFB /* VideoModule */,
@@ -1748,6 +1863,7 @@
 				F00BFA9F2B68216E003A7AFB /* CastDTO.swift in Sources */,
 				F0A867DD2B5F55C000801F89 /* AppDIContainer.swift in Sources */,
 				F0A867F12B602C0100801F89 /* ItemHomeMenuFactory.swift in Sources */,
+				F00BFAEA2B69FE54003A7AFB /* PhotosPersonCollectionCell.swift in Sources */,
 				F00BFA5A2B64A650003A7AFB /* MoviesGenresDTO+Mapping.swift in Sources */,
 				F00BFA462B61B35B003A7AFB /* UIImageView+Utils.swift in Sources */,
 				F0A867AA2B5B729500801F89 /* APIClientServiceType.swift in Sources */,
@@ -1757,6 +1873,7 @@
 				F0A867C12B5C2B2600801F89 /* ItemMoviesGenresViewModel.swift in Sources */,
 				F0A867BF2B5C2A4F00801F89 /* BaseViewModelType.swift in Sources */,
 				F00BFAAD2B683267003A7AFB /* ItemCastCollectionCell.swift in Sources */,
+				F00BFAE52B69D748003A7AFB /* ItemPhotosPersonViewModel.swift in Sources */,
 				F00BFABF2B687B3E003A7AFB /* PersonDetailRepositoryType.swift in Sources */,
 				F00BFAAF2B68379C003A7AFB /* CastViewController.swift in Sources */,
 				F00BFA2C2B61551B003A7AFB /* MoviesDTO+Mapping.swift in Sources */,
@@ -1793,6 +1910,8 @@
 				F00BFA3B2B618492003A7AFB /* ImageDataUseCase.swift in Sources */,
 				F00BFA382B6183AA003A7AFB /* ItemMoviesViewModel.swift in Sources */,
 				F0A867D32B5F4FA100801F89 /* Navigation.swift in Sources */,
+				F00BFAE12B69D5C7003A7AFB /* LoadPhotosPersonUseCase.swift in Sources */,
+				F00BFAD92B69CA5B003A7AFB /* PhotosPersonDTO.swift in Sources */,
 				F00BFA3E2B6184E8003A7AFB /* ImageDataRepositoryType.swift in Sources */,
 				F00BFAC72B687EF0003A7AFB /* PersonDetailViewModel.swift in Sources */,
 				F00BFA582B61EAC8003A7AFB /* RemoteImageDataService.swift in Sources */,
@@ -1812,18 +1931,23 @@
 				F0A867B92B5C299D00801F89 /* MoviesGenresViewModel.swift in Sources */,
 				F00BFA362B6182C9003A7AFB /* MoviesViewModel.swift in Sources */,
 				F0A867B32B5B751A00801F89 /* MoviesGenresRespositoryType.swift in Sources */,
+				F00BFAE32B69D73C003A7AFB /* PhotosPersonViewModel.swift in Sources */,
 				F00BFA562B61D0C7003A7AFB /* String+Extension.swift in Sources */,
 				F0A867DA2B5F53A900801F89 /* Auth.swift in Sources */,
 				F00BFABB2B686B55003A7AFB /* PersonDTO.swift in Sources */,
 				F00BFAC52B687ECA003A7AFB /* ItemPersonDetailViewModel.swift in Sources */,
 				F0A867732B5A145500801F89 /* LoginUseCase.swift in Sources */,
+				F00BFAE72B69DE93003A7AFB /* PhotosPersonViewController.swift in Sources */,
+				F00BFADB2B69CB27003A7AFB /* PhotosPersonDTO+Mapping.swift in Sources */,
 				F0A867862B5AED9100801F89 /* ViewValues.swift in Sources */,
 				F00BFA932B672A75003A7AFB /* VideoTrailerViewController.swift in Sources */,
+				F00BFADF2B69CDF3003A7AFB /* PhotosPersonRepository.swift in Sources */,
 				F0A8673A2B599B2700801F89 /* AppCoordinator.swift in Sources */,
 				F0A867692B59EF4E00801F89 /* UserCredential.swift in Sources */,
 				F00BFA482B61C8DA003A7AFB /* DateFormater.swift in Sources */,
 				F0A8676E2B59F09D00801F89 /* APILoginType.swift in Sources */,
 				F00BFA442B61A1EE003A7AFB /* UITableViewController+SpinnerLast.swift in Sources */,
+				F00BFADD2B69CD8D003A7AFB /* PhotosPersonRepositoryType.swift in Sources */,
 				F00BFAC32B687D91003A7AFB /* LoadPersonDetailUseCase.swift in Sources */,
 				F0A8678D2B5B315F00801F89 /* HomeMenuFactory.swift in Sources */,
 				F0A867AE2B5B734A00801F89 /* ApiError.swift in Sources */,

@@ -32,32 +32,28 @@ final class MoviesMenuViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configUI()
         configCollectionView()
         stateController()
         viewModel.viewDidLoad()
     }
-    
-    private func configUI() {
-        view.backgroundColor = .systemBackground
-    }
 
     private func configCollectionView() {
+        view.backgroundColor = .systemBackground
+        
         collectionView.register(ItemMoviesGenresCell.self, forCellWithReuseIdentifier: ItemMoviesGenresCell.reuseIdentifier)
     }
     
     private func stateController() {
         viewModel
             .state
+            .receive(on: RunLoop.main)
             .sink { [weak self] state in
                 guard let self = self else { return }
 //                self.hideSpinner()
                 switch state {
                     
                 case .success:
-                    DispatchQueue.main.async {
                         self.collectionView.reloadData()
-                    }
                 case .loading:
 //                    self.showSpinner()
                     print("---> cargando moviesMenu")

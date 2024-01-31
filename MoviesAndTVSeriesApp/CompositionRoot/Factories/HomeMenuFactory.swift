@@ -9,7 +9,6 @@ import UIKit
 
 struct HomeMenuFactory {
     
-    //    let user: UserDTO
     let appDIContainer: AppDIContainer?
     
     func makeHomeMenuController() -> UITabBarController {

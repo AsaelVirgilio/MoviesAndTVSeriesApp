@@ -28,6 +28,7 @@ struct MoviesMenuFactory: MoviesMenuFactoryType, ItemHomeMenuFactory {
         let loadMoviesGenresUseCase = LoadMoviesGenresUseCase(moviesGenresRepository: moviesGenresRespository)
         let moviesGenresViewModel = MoviesGenresViewModel(loadMoviesGenreUseCase: loadMoviesGenresUseCase, state: state)
         let controller = MoviesMenuViewController(collectionViewLayout: makeLayout(), viewModel: moviesGenresViewModel, coordinator: coordinator)
+
         controller.title = AppLocalized.moviesTapTitle
         return controller
     }

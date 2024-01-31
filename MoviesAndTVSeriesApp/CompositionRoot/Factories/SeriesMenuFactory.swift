@@ -22,6 +22,7 @@ struct SeriesMenuFactory: SeriesMenuFactoryType, LoginViewController2Coordinator
     }
     func makeTabBarItem(navigation: NavigationType) {
         makeItemHomeMenu(navigation: navigation, title: AppLocalized.seriesTapTitle, image: AppLocalized.seriesTapIcon)
+
     }
 }
 

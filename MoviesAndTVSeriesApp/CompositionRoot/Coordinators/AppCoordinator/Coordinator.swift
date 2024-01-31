@@ -8,6 +8,7 @@
 import UIKit
 
 protocol CoordinatorType: AnyObject {
-    var navigationController:NavigationType { get }
+    var navigationController:NavigationType { get set }
+  
     func start()
 }

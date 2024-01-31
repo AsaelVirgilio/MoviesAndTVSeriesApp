@@ -6,13 +6,11 @@
 //
 
 import UIKit
-protocol MoviesMenuCoordinatorDelegate: AnyObject {
-    func didTapLoguot()
-}
 
 final class MoviesMenuCoordinator: CoordinatorType {
     var navigationController: NavigationType
     private var moviesMenuFactory: MoviesMenuFactoryType
+    var childCoordinators: [CoordinatorType] = []
     
     init(navigationController: NavigationType,
          moviesMenuFactory: MoviesMenuFactoryType
@@ -23,14 +21,18 @@ final class MoviesMenuCoordinator: CoordinatorType {
     
     func start() {
         let controller = moviesMenuFactory.makeModule(coordinator: self)
-        navigationController.pushViewController(controller, animated: true)
         moviesMenuFactory.makeTabBarItem(navigation: navigationController)
+        navigationController.pushViewController(controller, animated: true)
     }
 }
 
 extension MoviesMenuCoordinator: MoviesMenuViewControllerCoordinator {
     func selectedMovieGenreCell(genre: ItemMoviesGenresViewModel) {
-        print("------> Movies genre selected \(genre)")
+        
+        let moviesListCoordinator = moviesMenuFactory.makeMoviesListCoordinator(navigation: navigationController, genre: genre, parentCoordinator: self)
+        addChildCoordinatorStar(moviesListCoordinator)
     }
-    
 }
+
+extension MoviesMenuCoordinator: ParentCoordinator { }
+

@@ -50,7 +50,7 @@ struct PathLocalized {
     static let searchTv = "/search/tv?query="
     static let moviesTrailers = "videos?"
     
-    static func createURL(path: URLPath, id: String) -> String {
+    static func createURL(path: URLPath, id: Int = 0) -> String {
         switch path {
         case .moviesTrending:
             return EndPoint.baseURL + trendingMovies + ApiKey.apiKey + "&page=\(id)"

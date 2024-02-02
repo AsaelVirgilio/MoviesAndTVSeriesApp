@@ -15,6 +15,7 @@ final class MoviesPersonDetailCoordinator: CoordinatorType{
     var navigationController: NavigationType
     private var detailPersonFactory: MoviesPersonDetailFactory
     private weak var parentCoordinator: ParentCoordinator?
+    var childCoordinators: [CoordinatorType] = []
     
     init(navigationController: NavigationType,
          detailPersonFactory: MoviesPersonDetailFactory,
@@ -36,8 +37,12 @@ final class MoviesPersonDetailCoordinator: CoordinatorType{
 }
 
 extension MoviesPersonDetailCoordinator: PersonDetailViewControllerCoordinator {
-    func didSelectPhoto(photoPath: String) {
+    func didSelectPhoto(photoPath: [String]) {
         print("----> Photo Selected \(photoPath)")
+        let coordinator = detailPersonFactory.makeSelectedPhotoModule(navigation: navigationController, photoPath: photoPath, coordinator: self)
+        
+        addChildCoordinatorStar(coordinator)
     }
     
 }
+extension MoviesPersonDetailCoordinator: ParentCoordinator {}

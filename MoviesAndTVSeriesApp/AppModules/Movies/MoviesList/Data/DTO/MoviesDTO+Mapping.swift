@@ -9,9 +9,21 @@ import Foundation
 
 extension MoviesDTO {
     func toDomain(idGenre: Int) -> [Movie]{
-        let moviesFiltered = results.filter {
-             $0.genreIDS.contains(idGenre)
+        //        let moviesFiltered = results.filter {
+        //             $0.genreIDS.contains(idGenre)
+        //        }
+        
+//        let moviesFiltered = results.filter {
+//            ($0.genreIDS.firstIndex(of: idGenre) != nil) == true
+//        }
+        var moviesFiltered: [Movie] = []
+        results.forEach {
+            if $0.genreIDS.firstIndex(of: idGenre) != nil {
+                print("-----> lo tiene la pelicula \($0.originalTitle)")
+                moviesFiltered.append($0)
+            }
         }
+        
         return moviesFiltered
     }
 }

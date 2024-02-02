@@ -14,29 +14,26 @@ protocol SelectedPhotoCoordinatorDelegate: AnyObject {
 final class SelectedPhotoCoordinator: CoordinatorType {
     var navigationController: NavigationType
     private var selectedPhotoFactory: SelectedPhotoFactoryType
-    private weak var parentCoordinator: ParentCoordinator?
+    private weak var delegate: SelectedPhotoCoordinatorDelegate?
     
     init(navigationController: NavigationType,
          selectedPhotoFactory: SelectedPhotoFactoryType,
-         parentCoordinator: ParentCoordinator? = nil
+         delegate: SelectedPhotoCoordinatorDelegate
     ) {
         self.navigationController = navigationController
         self.selectedPhotoFactory = selectedPhotoFactory
-        self.parentCoordinator = parentCoordinator
+        self.delegate = delegate
     }
-
+    
     func start() {
         let controller = selectedPhotoFactory.makeSelectedPhotoModule(coordinator: self)
         navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.pushViewController(controller, animated: true) { [weak self] in
-            guard let self = self else { return }
-            self.parentCoordinator?.removeChildCoordinator(self)
-        }
+        navigationController.viewControllers = [controller]
     }
 }
 
 extension SelectedPhotoCoordinator: SelectedPhotosPersonViewControllerCoordinator {
     func didDisapperView() {
-        print("DIisapper view")
+        print("Disapper view")
     }
 }

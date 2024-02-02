@@ -9,7 +9,7 @@ import Combine
 import UIKit
 
 protocol PhotosPersonViewControllerCoordinator {
-    func didSelectPhoto(photoPath: String)
+    func didSelectPhoto(photoPath: [String])
 }
 
 final class PhotosPersonViewController: UICollectionViewController {
@@ -37,7 +37,6 @@ final class PhotosPersonViewController: UICollectionViewController {
         super.init(collectionViewLayout: collectionViewLayout)
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -56,15 +55,13 @@ final class PhotosPersonViewController: UICollectionViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] response in
                 guard let self = self else {return}
-//                self.hideSpinner()
+                self.hideSpinner()
                 
                 switch response {
                 case .success:
                     self.collectionView.reloadData()
-                    print("-------> No Errrrrrroooooooorrrrr")
                 case .loading:
-                    print("-------> Loadiiiiing")
-//                    self.showSpinner()
+                    self.showSpinner()
                 case .fail(error: let error):
                     presentAlert(message: error, title: AppLocalized.alertErrorTitle)
                 }
@@ -92,13 +89,15 @@ extension PhotosPersonViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = viewModel.getItemPhotosPersonViewModel(row: indexPath.row)
-        coordinator?.didSelectPhoto(photoPath: item.filePath)
+//        let item = viewModel.getItemPhotosPersonViewModel(row: indexPath.row)
+//        coordinator?.didSelectPhoto(photoPath: item.filePath)
+        let item = viewModel.getPhotosURLs()
+        coordinator?.didSelectPhoto(photoPath: item)
     }
     
 }
 
 //MARK: - Extensions Here
 
-//extension PhotosPersonViewController: SpinnerDisplayable {}
+extension PhotosPersonViewController: SpinnerDisplayable {}
 extension PhotosPersonViewController: MessageDisplayable {}

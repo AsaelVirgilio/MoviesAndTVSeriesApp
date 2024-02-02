@@ -10,7 +10,7 @@ import Combine
 protocol PhotosPersonViewModelType: BaseViewModelType {
     var itemPhotosCount: Int { get }
     func getItemPhotosPersonViewModel(row: Int) -> ItemPhotosPersonViewModel
-    
+    func getPhotosURLs() -> [String]
 }
 
 final class PhotosPersonViewModel: PhotosPersonViewModelType {
@@ -25,11 +25,11 @@ final class PhotosPersonViewModel: PhotosPersonViewModelType {
     private var photos: [Profile] = []
     
     init(state: PassthroughSubject<StateController, Never>,
-         loadPhotosersonUseCase: LoadPhotosPersonUseCaseType,
+         loadPhotosPersonUseCase: LoadPhotosPersonUseCaseType,
          imageDataUseCase: ImageDataUseCaseType
     ) {
         self.state = state
-        self.loadPhotosPersonUseCase = loadPhotosersonUseCase
+        self.loadPhotosPersonUseCase = loadPhotosPersonUseCase
         self.imageDataUseCase = imageDataUseCase
     }
     
@@ -58,6 +58,11 @@ final class PhotosPersonViewModel: PhotosPersonViewModelType {
             state.send(.fail(error: error.localizedDescription))
         }
         
+    }
+    
+    func getPhotosURLs() -> [String] {
+        let array = photos.compactMap { $0.filePath }
+        return array
     }
     
     func getItemPhotosPersonViewModel(row: Int) -> ItemPhotosPersonViewModel {

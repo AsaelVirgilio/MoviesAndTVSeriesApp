@@ -49,14 +49,13 @@ final class MoviesMenuViewController: UICollectionViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] state in
                 guard let self = self else { return }
-//                self.hideSpinner()
+                self.hideSpinner()
                 switch state {
                     
                 case .success:
                         self.collectionView.reloadData()
                 case .loading:
-//                    self.showSpinner()
-                    print("---> cargando moviesMenu")
+                    self.showSpinner()
                 case .fail(error: let error):
                     self.presentAlert(message: error, title: AppLocalized.alertErrorTitle)
                 }
@@ -83,5 +82,5 @@ extension MoviesMenuViewController {
         coordinator.selectedMovieGenreCell(genre: item)
     }
 }
-//extension MoviesMenuViewController: SpinnerDisplayable {}
+extension MoviesMenuViewController: SpinnerDisplayable {}
 extension MoviesMenuViewController: MessageDisplayable {}

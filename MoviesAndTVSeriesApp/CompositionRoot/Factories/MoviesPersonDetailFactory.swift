@@ -10,6 +10,7 @@ import Combine
 
 protocol MoviesPersonDetailFactoryType {
     func makeMoviesPersonDetailModule(coordinator: PersonDetailViewControllerCoordinator) -> UIViewController
+    func makeSelectedPhotoModule(navigation: NavigationType, photoPath: [String], coordinator: ParentCoordinator) -> CoordinatorType
 }
 
 struct MoviesPersonDetailFactory: MoviesPersonDetailFactoryType {
@@ -47,7 +48,7 @@ struct MoviesPersonDetailFactory: MoviesPersonDetailFactoryType {
         let imageDataUseCase = ImageDataUseCase(imageDataRepository: imageDataRepository)
         let photosPersonViewModel = PhotosPersonViewModel(
             state: state,
-            loadPhotosersonUseCase: loadPhotosPersonUseCase,
+            loadPhotosPersonUseCase: loadPhotosPersonUseCase,
             imageDataUseCase: imageDataUseCase)
         let photosPersonViewController = PhotosPersonViewController(
             collectionViewLayout: makeSectionLayout(),
@@ -75,7 +76,7 @@ struct MoviesPersonDetailFactory: MoviesPersonDetailFactoryType {
             section.orthogonalScrollingBehavior = .groupPagingCentered
             section.interGroupSpacing = 10
             section.contentInsets = .init(top: 0, leading: 10, bottom: 30, trailing: 10)
-//            section.boundarySupplementaryItems = [supplementaryHeaderItem()]
+            section.boundarySupplementaryItems = [supplementaryHeaderItem()]
             section.supplementariesFollowContentInsets = false
             return section
         }
@@ -85,5 +86,10 @@ struct MoviesPersonDetailFactory: MoviesPersonDetailFactoryType {
         .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
     }
     
+    func makeSelectedPhotoModule(navigation: NavigationType, photoPath: [String], coordinator: ParentCoordinator) -> CoordinatorType {
+        let factory = SelectedPhotoFactory(urlPhotos: photoPath)
+        
+        return SelectedPhotoCoordinator(navigationController: navigation, selectedPhotoFactory: factory)
+    }
 }
 

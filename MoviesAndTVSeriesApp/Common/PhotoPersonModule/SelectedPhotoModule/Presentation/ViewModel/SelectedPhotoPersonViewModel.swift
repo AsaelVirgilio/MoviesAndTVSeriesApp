@@ -31,7 +31,6 @@ final class SelectedPhotoPersonViewModel: SelectedPhotoPersonViewModelType {
     }
     
     func viewDidLoad() {
-//        state.send(.loading)
 //        print("------> URLs \(photosPath)")
     }
     

@@ -16,6 +16,7 @@ final class PhotosPersonViewController: UICollectionViewController {
     //MARK: - Public Properties
     
     //MARK: - Private Properties
+    
     private let viewModel: PhotosPersonViewModelType
     private var coordinator: PhotosPersonViewControllerCoordinator?
     private var cancellables = Set<AnyCancellable>()
@@ -44,7 +45,6 @@ final class PhotosPersonViewController: UICollectionViewController {
     //MARK: - Helpers
     private func configCollectionView() {
         view.backgroundColor = .systemBackground
-        
         collectionView.register(PhotosPersonCollectionCell.self, forCellWithReuseIdentifier: PhotosPersonCollectionCell.reuseIdentifier)
         
     }
@@ -89,8 +89,6 @@ extension PhotosPersonViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let item = viewModel.getItemPhotosPersonViewModel(row: indexPath.row)
-//        coordinator?.didSelectPhoto(photoPath: item.filePath)
         let item = viewModel.getPhotosURLs()
         coordinator?.didSelectPhoto(photoPath: item)
     }

@@ -19,7 +19,7 @@ extension MoviesDTO {
         var moviesFiltered: [Movie] = []
         results.forEach {
             if $0.genreIDS.firstIndex(of: idGenre) != nil {
-                print("-----> lo tiene la pelicula \($0.originalTitle)")
+                print("-----> lo tiene la pelicula \($0.originalTitle), \($0.genreIDS)")
                 moviesFiltered.append($0)
             }
         }

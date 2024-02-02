@@ -49,7 +49,6 @@ final class SelectedPhotoPersonViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .yellow
         view.translatesAutoresizingMaskIntoConstraints = false
         viewModel.viewDidLoad()
         configCollectionView()
@@ -60,12 +59,13 @@ final class SelectedPhotoPersonViewController: UICollectionViewController {
     
     private func configCollectionView() {
         view.backgroundColor = .systemBackground
-//        let margins = layoutMarginsGuide
-        
+//        view.addSubview(pageControl)
+//        pageControl.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        pageControl.widthAnchor.constraint(equalToConstant: 50).isActive = true
+//        pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         collectionView.register(SelectedPhotoCollectionCell.self, forCellWithReuseIdentifier: SelectedPhotoCollectionCell.reuseIdentifier)
         
     }
-    
     //MARK: - Actions
     
 }
@@ -86,17 +86,5 @@ extension SelectedPhotoPersonViewController {
         cell.configData(viewModel: itemModel)
         
         return cell
-    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-//    }
-}
-
-extension SelectedPhotoPersonViewController {
-    
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let width = scrollView.frame.width
-        currentPage = Int(scrollView.contentOffset.x / width)
     }
 }

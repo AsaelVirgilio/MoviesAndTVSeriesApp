@@ -167,14 +167,14 @@ final class MovieDetailViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] result in
                 guard let self = self else { return }
-                
+                self.hideSpinner()
                 switch result {
                 case .success:
                     self.configData()
                 case .loading:
-                    break
+                    self.showSpinner()
                 case .fail(error: let error):
-                    print("----> Error \(error)")
+                    self.presentAlert(message: error, title: AppLocalized.alertErrorTitle)
                 }
             }
             .store(in: &cancellable)
@@ -203,3 +203,6 @@ final class MovieDetailViewController: UIViewController {
 }
 
 //MARK: - Extensions Here
+
+extension MovieDetailViewController: SpinnerDisplayable {}
+extension MovieDetailViewController: MessageDisplayable {}

@@ -40,7 +40,6 @@ final class MoviesPersonDetailCoordinator: CoordinatorType{
 
 extension MoviesPersonDetailCoordinator: PersonDetailViewControllerCoordinator {
     func didSelectPhoto(photoPath: [String]) {
-        print("----> Photo Selected \(photoPath)")
         selectePhotoCoordinator = detailPersonFactory.makeSelectedPhotoModule(
             photoPath: photoPath,
             delegate: self)

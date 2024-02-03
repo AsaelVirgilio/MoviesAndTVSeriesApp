@@ -18,7 +18,7 @@ final class SelectedPhotoPersonViewController: UICollectionViewController {
     //MARK: - Private Properties
     private var coordinator: SelectedPhotosPersonViewControllerCoordinator
     private let viewModel: SelectedPhotoPersonViewModelType
-    
+    private var idPhoto: IndexPath
     private var pageControl: UIPageControl = {
         let page = UIPageControl()
         page.translatesAutoresizingMaskIntoConstraints = false
@@ -36,10 +36,12 @@ final class SelectedPhotoPersonViewController: UICollectionViewController {
     
     init(layout: UICollectionViewLayout,
         coordinator: SelectedPhotosPersonViewControllerCoordinator,
-         viewModel: SelectedPhotoPersonViewModelType
+         viewModel: SelectedPhotoPersonViewModelType,
+         idPhoto: IndexPath
     ) {
         self.coordinator = coordinator
         self.viewModel = viewModel
+        self.idPhoto = idPhoto
         super.init(collectionViewLayout: layout)
     }
     
@@ -50,6 +52,7 @@ final class SelectedPhotoPersonViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsVerticalScrollIndicator = false
         viewModel.viewDidLoad()
         configCollectionView()
     }
@@ -59,12 +62,8 @@ final class SelectedPhotoPersonViewController: UICollectionViewController {
     
     private func configCollectionView() {
         view.backgroundColor = .systemBackground
-//        view.addSubview(pageControl)
-//        pageControl.heightAnchor.constraint(equalToConstant: 20).isActive = true
-//        pageControl.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//        pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         collectionView.register(SelectedPhotoCollectionCell.self, forCellWithReuseIdentifier: SelectedPhotoCollectionCell.reuseIdentifier)
-        
+        collectionView.scrollToItem(at: idPhoto, at: .centeredHorizontally, animated: true)
     }
     //MARK: - Actions
     
@@ -87,4 +86,6 @@ extension SelectedPhotoPersonViewController {
         
         return cell
     }
+    
+    
 }

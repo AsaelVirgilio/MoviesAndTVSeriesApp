@@ -9,7 +9,7 @@ import Combine
 import UIKit
 
 protocol PhotosPersonViewControllerCoordinator {
-    func didSelectPhoto(photoPath: [String])
+    func didSelectPhoto(photoPath: [String], idSelected: IndexPath)
 }
 
 final class PhotosPersonViewController: UICollectionViewController {
@@ -45,7 +45,11 @@ final class PhotosPersonViewController: UICollectionViewController {
     //MARK: - Helpers
     private func configCollectionView() {
         view.backgroundColor = .systemBackground
-        collectionView.register(PhotosPersonCollectionCell.self, forCellWithReuseIdentifier: PhotosPersonCollectionCell.reuseIdentifier)
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.register(
+            PhotosPersonCollectionCell.self,
+            forCellWithReuseIdentifier: PhotosPersonCollectionCell.reuseIdentifier
+        )
         
     }
     
@@ -90,7 +94,7 @@ extension PhotosPersonViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = viewModel.getPhotosURLs()
-        coordinator?.didSelectPhoto(photoPath: item)
+        coordinator?.didSelectPhoto(photoPath: item, idSelected: indexPath)
     }
     
 }

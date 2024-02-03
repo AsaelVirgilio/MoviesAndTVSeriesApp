@@ -52,13 +52,14 @@ final class MoviesViewController: UITableViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] state in
                 guard let self = self else { return }
+                self.hideSpinner()
                 
                 switch state {
-                    
                 case .success:
                     self.tableView.reloadData()
                 case .loading:
-                    print("Cargando...")
+                    print("Loading movies...")
+//                    self.showSpinner()
                 case .fail(error: let error):
                     self.presentAlert(message: error, title: AppLocalized.okButton)
                 }
@@ -69,6 +70,7 @@ final class MoviesViewController: UITableViewController {
     
     
 }
+extension MoviesViewController: SpinnerDisplayable {}
 extension MoviesViewController: MessageDisplayable {}
 
 extension MoviesViewController {

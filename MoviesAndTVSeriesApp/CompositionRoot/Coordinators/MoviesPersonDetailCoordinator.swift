@@ -39,10 +39,13 @@ final class MoviesPersonDetailCoordinator: CoordinatorType{
 }
 
 extension MoviesPersonDetailCoordinator: PersonDetailViewControllerCoordinator {
-    func didSelectPhoto(photoPath: [String]) {
+    
+    func didSelectPhoto(photoPath: [String], idSelected: IndexPath) {
         selectePhotoCoordinator = detailPersonFactory.makeSelectedPhotoModule(
             photoPath: photoPath,
-            delegate: self)
+            idSelected: idSelected,
+            delegate: self
+        )
         
         selectePhotoCoordinator?.start()
         guard let selectePhotoCoordinator = selectePhotoCoordinator else { return }

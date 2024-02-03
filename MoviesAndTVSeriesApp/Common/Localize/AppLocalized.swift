@@ -18,6 +18,8 @@ struct AppLocalized {
     static let biometricBtn = "Biometric"
     static let invalidCredential = "Please verify the username and password format"
     
+    static let allMoviesGenresId = 123123
+    static let allMoviesGenresName = "All Movies"
     static let moviesTapTitle = "Movies"
     static let seriesTapTitle = "TV Series"
     static let moviesTapIcon = "camara_2x"

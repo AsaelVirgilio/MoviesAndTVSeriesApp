@@ -40,7 +40,6 @@ final class VideoTrailerViewController: UIViewController {
     //MARK: - Life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
         viewModel.viewDidLoad()
         configUserInterface()
         stateController()
@@ -48,6 +47,8 @@ final class VideoTrailerViewController: UIViewController {
     
     //MARK: - Helpers
     private func configUserInterface() {
+        player.delegate = self
+        
         view.addSubview(player)
         
         NSLayoutConstraint.activate([

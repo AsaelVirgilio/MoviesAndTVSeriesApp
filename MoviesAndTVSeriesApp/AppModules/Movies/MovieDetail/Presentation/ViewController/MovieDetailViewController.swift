@@ -20,8 +20,6 @@ final class MovieDetailViewController: UIViewController {
     private let videoTrailerViewController: VideoTrailerViewController
     private let castViewController: CastViewController
     
-    
-    
     private let headerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +40,7 @@ final class MovieDetailViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.showsVerticalScrollIndicator = false
         return scroll
     }()
     
@@ -58,7 +57,6 @@ final class MovieDetailViewController: UIViewController {
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.spacing = 20
-//        stack.alignment = .center
         return stack
     }()
     

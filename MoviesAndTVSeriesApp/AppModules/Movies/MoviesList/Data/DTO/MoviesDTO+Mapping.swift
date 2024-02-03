@@ -9,21 +9,17 @@ import Foundation
 
 extension MoviesDTO {
     func toDomain(idGenre: Int) -> [Movie]{
-        //        let moviesFiltered = results.filter {
-        //             $0.genreIDS.contains(idGenre)
-        //        }
+        var moviesFiltered = results
         
-//        let moviesFiltered = results.filter {
-//            ($0.genreIDS.firstIndex(of: idGenre) != nil) == true
-//        }
-        var moviesFiltered: [Movie] = []
-        results.forEach {
-            if $0.genreIDS.firstIndex(of: idGenre) != nil {
-                print("-----> lo tiene la pelicula \($0.originalTitle), \($0.genreIDS)")
-                moviesFiltered.append($0)
+        if idGenre != AppLocalized.allMoviesGenresId {
+            
+            moviesFiltered = results.filter {
+                $0.genreIDS.contains(idGenre)
             }
+            
         }
         
         return moviesFiltered
+        
     }
 }

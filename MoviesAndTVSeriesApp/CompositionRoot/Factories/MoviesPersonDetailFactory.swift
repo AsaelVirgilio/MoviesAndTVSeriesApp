@@ -11,7 +11,11 @@ import Combine
 protocol MoviesPersonDetailFactoryType {
     func makeMoviesPersonDetailModule(coordinator: PersonDetailViewControllerCoordinator) -> UIViewController
     
-    func makeSelectedPhotoModule(photoPath: [String], delegate: SelectedPhotoCoordinatorDelegate) -> CoordinatorType
+    func makeSelectedPhotoModule(
+        photoPath: [String],
+        idSelected: IndexPath,
+        delegate: SelectedPhotoCoordinatorDelegate
+    ) -> CoordinatorType
 }
 
 struct MoviesPersonDetailFactory: MoviesPersonDetailFactoryType {
@@ -87,13 +91,17 @@ struct MoviesPersonDetailFactory: MoviesPersonDetailFactoryType {
         .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
     }
     
-    func makeSelectedPhotoModule(photoPath: [String], delegate: SelectedPhotoCoordinatorDelegate) -> CoordinatorType {
+    func makeSelectedPhotoModule(
+        photoPath: [String],
+        idSelected: IndexPath,
+        delegate: SelectedPhotoCoordinatorDelegate
+    ) -> CoordinatorType {
         
-        let factory = SelectedPhotoFactory(urlPhotos: photoPath)
+        let factory = SelectedPhotoFactory(urlPhotos: photoPath, idPhoto: idSelected)
         let navigationController = UINavigationController()
         let navigation = Navigation(rootViewController: navigationController)
         
-        return SelectedPhotoCoordinator(navigationController: navigation, selectedPhotoFactory: factory, delegate: delegate)
+        return SelectedPhotoCoordinator(navigationController: navigation, selectedPhotoFactory: factory, delegate: delegate, idSelected: idSelected)
     }
 }
 

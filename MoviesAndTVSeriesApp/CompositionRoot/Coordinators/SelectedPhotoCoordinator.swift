@@ -15,14 +15,17 @@ final class SelectedPhotoCoordinator: CoordinatorType {
     var navigationController: NavigationType
     private var selectedPhotoFactory: SelectedPhotoFactoryType
     private weak var delegate: SelectedPhotoCoordinatorDelegate?
+    var idSelected: IndexPath
     
     init(navigationController: NavigationType,
          selectedPhotoFactory: SelectedPhotoFactoryType,
-         delegate: SelectedPhotoCoordinatorDelegate
+         delegate: SelectedPhotoCoordinatorDelegate,
+         idSelected: IndexPath
     ) {
         self.navigationController = navigationController
         self.selectedPhotoFactory = selectedPhotoFactory
         self.delegate = delegate
+        self.idSelected = idSelected
     }
     
     func start() {

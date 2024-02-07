@@ -10,7 +10,7 @@ import Combine
 
 protocol SearchMovieFactoryType {
     func makeSearchMovieFactory(coordinator: SearchMediaViewControllerCoordinator) -> UIViewController
-    
+    var dicInfo: [String:Any] {get set}
 //    func makeMovieDetailCoordinator(navigation: NavigationType,
 //                                    movie: SearchResults,
 //                                    parentCoordinator: ParentCoordinator) -> CoordinatorType
@@ -18,7 +18,7 @@ protocol SearchMovieFactoryType {
 
 struct SearchMovieFactory: SearchMovieFactoryType {
     
-    let dicInfo: [String:Any]
+    var dicInfo: [String:Any]
     
     func makeSearchMovieFactory(coordinator: SearchMediaViewControllerCoordinator) -> UIViewController {
         let state = PassthroughSubject<StateController, Never>()

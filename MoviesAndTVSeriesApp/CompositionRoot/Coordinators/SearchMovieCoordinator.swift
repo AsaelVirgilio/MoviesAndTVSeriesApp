@@ -28,6 +28,8 @@ final class SearchMovieCoordinator: CoordinatorType {
     
     func start() {
         let controller = factory.makeSearchMovieFactory(coordinator: self)
+        let genre = factory.dicInfo["key"] as? String ?? ""
+        controller.title = "Results of: \(genre)"
         navigationController.pushViewController(controller, animated: true) {
             [weak self] in
             guard let self = self else { return }

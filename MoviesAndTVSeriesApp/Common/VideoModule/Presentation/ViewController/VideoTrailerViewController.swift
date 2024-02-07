@@ -40,8 +40,6 @@ final class VideoTrailerViewController: UIViewController {
     //MARK: - Life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
-//        player.delegate = self
         viewModel.viewDidLoad()
         configUserInterface()
         stateController()
@@ -49,18 +47,15 @@ final class VideoTrailerViewController: UIViewController {
     
     //MARK: - Helpers
     private func configUserInterface() {
-//        let margins = view.layoutMarginsGuide
+        player.delegate = self
+        
         view.addSubview(player)
         
         NSLayoutConstraint.activate([
-//            player.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            player.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             player.topAnchor.constraint(equalTo: view.topAnchor),
             player.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             player.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             player.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//            player.widthAnchor.constraint(equalToConstant: 300),
-//            player.heightAnchor.constraint(equalToConstant: 300)
         ])
         
     }
@@ -72,15 +67,14 @@ final class VideoTrailerViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] videos in
                 guard let self = self else { return }
-                
+                self.hideSpinner()
                 switch videos {
                 case .success:
                     self.loadVideo()
-                    print("------> Loaded VIdeo......")
                 case .loading:
-                    print("------> Waiting for video......")
+                    self.showSpinner()
                 case .fail(error: let error):
-                    print("------> Video Error \(error)")
+                    self.presentAlert(message: error, title: AppLocalized.alertErrorTitle)
                 }
             }
             .store(in: &cancellables)
@@ -103,3 +97,5 @@ extension VideoTrailerViewController: YTPlayerViewDelegate {
     }
 }
 
+extension VideoTrailerViewController: SpinnerDisplayable {}
+extension VideoTrailerViewController: MessageDisplayable {}

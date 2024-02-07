@@ -70,12 +70,10 @@ final class SelectedPhotoCollectionCell: UICollectionViewCell {
     
     private func setImage(viewModel: ItemSelectedPhoto) {
         if let data = viewModel.imageData {
-            print("------> de Data")
             imageView.setImageFromData(data: data)
         }
         else{
             task = Task {
-                print("------> de Data remote")
                 let dataImage = await viewModel.getImageData()
                 imageView.setImageFromData(data: dataImage)
             }

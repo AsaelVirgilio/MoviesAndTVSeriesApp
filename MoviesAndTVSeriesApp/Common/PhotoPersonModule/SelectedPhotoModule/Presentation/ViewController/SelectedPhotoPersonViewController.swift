@@ -18,7 +18,7 @@ final class SelectedPhotoPersonViewController: UICollectionViewController {
     //MARK: - Private Properties
     private var coordinator: SelectedPhotosPersonViewControllerCoordinator
     private let viewModel: SelectedPhotoPersonViewModelType
-    
+    private var idPhoto: IndexPath
     private var pageControl: UIPageControl = {
         let page = UIPageControl()
         page.translatesAutoresizingMaskIntoConstraints = false
@@ -36,10 +36,12 @@ final class SelectedPhotoPersonViewController: UICollectionViewController {
     
     init(layout: UICollectionViewLayout,
         coordinator: SelectedPhotosPersonViewControllerCoordinator,
-         viewModel: SelectedPhotoPersonViewModelType
+         viewModel: SelectedPhotoPersonViewModelType,
+         idPhoto: IndexPath
     ) {
         self.coordinator = coordinator
         self.viewModel = viewModel
+        self.idPhoto = idPhoto
         super.init(collectionViewLayout: layout)
     }
     
@@ -49,8 +51,8 @@ final class SelectedPhotoPersonViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .yellow
         view.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsVerticalScrollIndicator = false
         viewModel.viewDidLoad()
         configCollectionView()
     }
@@ -60,12 +62,9 @@ final class SelectedPhotoPersonViewController: UICollectionViewController {
     
     private func configCollectionView() {
         view.backgroundColor = .systemBackground
-//        let margins = layoutMarginsGuide
-        
         collectionView.register(SelectedPhotoCollectionCell.self, forCellWithReuseIdentifier: SelectedPhotoCollectionCell.reuseIdentifier)
-        
+        collectionView.scrollToItem(at: idPhoto, at: .centeredHorizontally, animated: true)
     }
-    
     //MARK: - Actions
     
 }
@@ -88,15 +87,5 @@ extension SelectedPhotoPersonViewController {
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-//    }
-}
-
-extension SelectedPhotoPersonViewController {
     
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let width = scrollView.frame.width
-        currentPage = Int(scrollView.contentOffset.x / width)
-    }
 }

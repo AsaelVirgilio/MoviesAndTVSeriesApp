@@ -49,12 +49,16 @@ final class MoviesGenresViewModel: MoviesGenresViewModelType {
             
         case .success(let genres):
             self.genres.append(contentsOf: genres)
+            addAllGenresOption()
             state.send(.success)
         case .failure(let error):
             state.send(.fail(error: error.localizedDescription))
         }
     }
-    
+    private func addAllGenresOption() {
+        let allGenres = MGenre(id: AppLocalized.allMoviesGenresId, name: AppLocalized.allMoviesGenresName)
+        self.genres.insert(allGenres, at: 0)
+    }
     func getItemMovieGenreViewModel(row: Int) -> ItemMoviesGenresViewModel {
         makeItemGenreViewModel(row: row)
     }

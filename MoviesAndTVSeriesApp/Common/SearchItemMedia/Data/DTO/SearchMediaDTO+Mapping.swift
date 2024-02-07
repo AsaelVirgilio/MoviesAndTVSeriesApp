@@ -1,15 +1,13 @@
 //
-//  MoviesDTO+Mapping.swift
+//  SearchMediaDTO+Mapping.swift
 //  MoviesAndTVSeriesApp
 //
-//  Created by Asael Virgilio on 24/01/24.
+//  Created by Asael Virgilio on 04/02/24.
 //
 
-import Foundation
-
-extension MoviesDTO {
+extension SearchMediaDTO {
     
-    func toDomain(idGenre: Int) -> [Movie]{
+    func toDomain(idGenre: Int) -> [SearchResults]{
         var moviesFiltered = results
         
         if idGenre != AppLocalized.allMoviesGenresId {

@@ -73,12 +73,12 @@ struct PathLocalized {
         }
     }
     
-    static func createURLSearch(path: URLPathSearch, keyWord: String, page: Int) -> String {
+    static func createURLSearch(path: URLPathSearch, keyword: String, page: Int) -> String {
         switch path {
         case .searchMovie:
-            return EndPoint.baseURL + searchMovie + "\(keyWord)/" + "&page=\(page)&" + ApiKey.apiKey
+            return EndPoint.baseURL + searchMovie + "\(keyword)/" + "&page=\(page)&" + ApiKey.apiKey
         case .searchSerie:
-            return EndPoint.baseURL + searchTv + "\(keyWord)/" + "&page=\(page)&" + ApiKey.apiKey
+            return EndPoint.baseURL + searchTv + "\(keyword)/" + "&page=\(page)&" + ApiKey.apiKey
         }
     }
 }

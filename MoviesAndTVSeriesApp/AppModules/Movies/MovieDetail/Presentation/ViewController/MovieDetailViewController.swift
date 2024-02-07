@@ -20,8 +20,6 @@ final class MovieDetailViewController: UIViewController {
     private let videoTrailerViewController: VideoTrailerViewController
     private let castViewController: CastViewController
     
-    
-    
     private let headerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +40,7 @@ final class MovieDetailViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.showsVerticalScrollIndicator = false
         return scroll
     }()
     
@@ -58,7 +57,6 @@ final class MovieDetailViewController: UIViewController {
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.spacing = 20
-//        stack.alignment = .center
         return stack
     }()
     
@@ -167,14 +165,14 @@ final class MovieDetailViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] result in
                 guard let self = self else { return }
-                
+                self.hideSpinner()
                 switch result {
                 case .success:
                     self.configData()
                 case .loading:
-                    break
+                    self.showSpinner()
                 case .fail(error: let error):
-                    print("----> Error \(error)")
+                    self.presentAlert(message: error, title: AppLocalized.alertErrorTitle)
                 }
             }
             .store(in: &cancellable)
@@ -203,3 +201,6 @@ final class MovieDetailViewController: UIViewController {
 }
 
 //MARK: - Extensions Here
+
+extension MovieDetailViewController: SpinnerDisplayable {}
+extension MovieDetailViewController: MessageDisplayable {}

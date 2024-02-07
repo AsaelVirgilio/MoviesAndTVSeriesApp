@@ -26,12 +26,12 @@ final class MoviesViewModel: MoviesViewModelType {
     
     private var movies: [Movie] = []
     private var loadMoviesUseCase: LoadMoviesUseCaseType
-    private var lastPageValidationUseCase: LastPageValidationUseCase
+    private var lastPageValidationUseCase: LastPageValidationUseCaseType
     private var imageDataUseCase: ImageDataUseCaseType
     
     init(state: PassthroughSubject<StateController, Never>,
          loadMoviesUseCase: LoadMoviesUseCaseType,
-         lastPageValidationUseCase: LastPageValidationUseCase,
+         lastPageValidationUseCase: LastPageValidationUseCaseType,
          imageDataUseCase: ImageDataUseCaseType) {
         self.state = state
         self.loadMoviesUseCase = loadMoviesUseCase

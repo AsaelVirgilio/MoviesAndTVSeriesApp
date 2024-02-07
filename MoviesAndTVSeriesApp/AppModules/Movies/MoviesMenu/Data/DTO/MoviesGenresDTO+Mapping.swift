@@ -12,7 +12,8 @@ extension MoviesGenresDTO {
         
 //        [18, 99, 10402, 10749].removeFirstOccurrence(of: Int)
         
-        genres.filter { $0.id != 18 && $0.id != 99 && $0.id != 10402 && $0.id != 10749 }
+//        genres.filter { $0.id != 18 && $0.id != 99 && $0.id != 10402 && $0.id != 10749 }
+        genres
         
     }
 }

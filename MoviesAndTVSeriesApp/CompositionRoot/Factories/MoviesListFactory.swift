@@ -13,6 +13,9 @@ protocol MoviesListFactoryType {
     func makeMovieDetailCoordinator(navigation: NavigationType,
                                     movie: Movie,
                                     parentCoordinator: ParentCoordinator) -> CoordinatorType
+    
+    func makeSearchMediaController(navigation: NavigationType,
+                                          parentCoordinator: ParentCoordinator) -> CoordinatorType
 }
 
 struct MoviesListFactory: ItemHomeMenuFactory, MoviesListFactoryType {
@@ -56,6 +59,11 @@ struct MoviesListFactory: ItemHomeMenuFactory, MoviesListFactoryType {
                                       factoryDetail: factory,
                                       parentCoordinator: parentCoordinator)
     }
-
+    
+    func makeSearchMediaController(navigation: NavigationType, parentCoordinator: ParentCoordinator) -> CoordinatorType {
+        let factory = SearchMediaControllerFactory(idGenre: itemMoviesGenresViewModel.idGenre)
+        let controller = SearchMediaControllerCoordinator(navigationController: navigation, factory: factory, parentCoordinator: parentCoordinator)
+        return controller
+    }
 }
 

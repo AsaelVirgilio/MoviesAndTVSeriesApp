@@ -15,6 +15,7 @@ protocol SelectedPhotoFactoryType {
 struct SelectedPhotoFactory: SelectedPhotoFactoryType {
     
     var urlPhotos: [String]
+    var idPhoto: IndexPath
     
     func makeSelectedPhotoModule(coordinator: SelectedPhotosPersonViewControllerCoordinator) -> UIViewController {
     
@@ -31,7 +32,7 @@ struct SelectedPhotoFactory: SelectedPhotoFactoryType {
         )
         let controller = SelectedPhotoPersonViewController(
             layout: makeSectionLayout(), coordinator: coordinator,
-            viewModel: selectedPhotoPersonViewModel
+            viewModel: selectedPhotoPersonViewModel, idPhoto: idPhoto
         )
         return controller
     }

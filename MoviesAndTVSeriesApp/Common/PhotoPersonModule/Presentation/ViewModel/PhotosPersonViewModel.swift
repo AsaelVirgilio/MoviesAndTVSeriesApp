@@ -33,7 +33,6 @@ final class PhotosPersonViewModel: PhotosPersonViewModelType {
         self.imageDataUseCase = imageDataUseCase
     }
     
-    
     func viewDidLoad() {
         state.send(.loading)
         Task {

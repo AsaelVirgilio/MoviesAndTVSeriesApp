@@ -32,22 +32,18 @@ final class MovieDetailCoordinator: CoordinatorType {
             guard let self = self else { return }
             self.parentCoordinator?.removeChildCoordinator(self)
         }
-        
     }
-    
-    
 }
 
 extension MovieDetailCoordinator: MovieDetailViewControllerCoordinator {
 
     //MARK: - VideoTrailerViewControllerCoordinator
     func didSelectExit() {
-        print("Exit detail")
+        print("---------->  Exit detail")
     }
     
     //MARK: - CastViewControllerCoordinator
     func didSelectPersonCell(itemCastViewModel: ItemCastViewModel) {
-        print("Person selected \(itemCastViewModel.originalName)")
         let moviesPersonCoordinator = factoryDetail.makeMoviesPersonDetailCoordinator(
             navigation: navigationController,
             itemCastViewModel: itemCastViewModel,

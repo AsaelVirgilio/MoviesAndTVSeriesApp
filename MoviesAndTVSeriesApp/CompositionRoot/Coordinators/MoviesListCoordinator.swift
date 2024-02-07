@@ -44,6 +44,10 @@ extension MoviesListCoordinator: MoviesViewControllerCoordinator {
         addChildCoordinatorStar(movieDetailCoordinator)
     }
     
+    func pushedSearchButton() {
+        let searchMediaController = factory.makeSearchMediaController(navigation: navigationController, parentCoordinator: self)
+        addChildCoordinatorStar(searchMediaController)
+    }
 }
 
 extension MoviesListCoordinator: ParentCoordinator {}

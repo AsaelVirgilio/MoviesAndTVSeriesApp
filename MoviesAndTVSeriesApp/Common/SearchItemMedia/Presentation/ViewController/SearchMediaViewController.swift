@@ -1,30 +1,33 @@
 //
-//  MoviesViewController.swift
+//  SearchMediaViewController.swift
 //  MoviesAndTVSeriesApp
 //
-//  Created by Asael Virgilio on 24/01/24.
+//  Created by Asael Virgilio on 06/02/24.
 //
 
-import UIKit
 import Combine
+import UIKit
 
-protocol MoviesViewControllerCoordinator {
-    func didSelectCell(movie: Movie)
-    func pushedSearchButton()
+protocol SearchMediaViewControllerCoordinator {
+    func didSelectCell(movie: SearchResults)
+    
 }
 
-final class MoviesViewController: UITableViewController {
+import UIKit
+
+final class SearchMediaViewController: UITableViewController {
+    
     //MARK: - Public Properties
     
     //MARK: - Private Properties
-    private let viewModel: MoviesViewModelType
-    private var cancellables = Set<AnyCancellable>()
-    private let coordinator: MoviesViewControllerCoordinator
     
+    private let viewModel: SearchMediaViewModelType
+    private let coordinator: SearchMediaViewControllerCoordinator
+    private var cancellables = Set<AnyCancellable>()
     //MARK: - Life cicle
     
-    init(viewModel: MoviesViewModelType,
-         coordinator: MoviesViewControllerCoordinator
+    init(viewModel: SearchMediaViewModelType,
+         coordinator: SearchMediaViewControllerCoordinator
     ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
@@ -41,17 +44,13 @@ final class MoviesViewController: UITableViewController {
         configTableView()
         stateController()
     }
+    
     //MARK: - Helpers
     private func configTableView() {
         tableView.separatorStyle = .none
-        let image = UIImage(systemName: "magnifyingglass")
-        let barButtonItem = UIBarButtonItem(image: image,
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(goToSearch))
-        navigationItem.rightBarButtonItem = barButtonItem
-        tableView.register(ItemMovieTableViewCell.self, forCellReuseIdentifier: ItemMovieTableViewCell.reuseIdentifier)
+        tableView.register(ItemSearchTableViewCell.self, forCellReuseIdentifier: ItemSearchTableViewCell.reuseIdentifier)
         addSpinnerLastCell()
+        
     }
     
     private func stateController() {
@@ -61,53 +60,53 @@ final class MoviesViewController: UITableViewController {
             .sink { [weak self] state in
                 guard let self = self else { return }
                 self.hideSpinner()
-                
                 switch state {
+                    
                 case .success:
                     self.tableView.reloadData()
                 case .loading:
-                    print("Loading movies...")
-//                    self.showSpinner()
+                    self.showSpinner()
                 case .fail(error: let error):
-                    self.presentAlert(message: error, title: AppLocalized.okButton)
+                    self.presentAlert(message: error, title: AppLocalized.alertErrorTitle)
                 }
             }
             .store(in: &cancellables)
     }
+    
     //MARK: - Actions
-    @objc
-    private func goToSearch() {
-        coordinator.pushedSearchButton()
-    }
     
 }
-extension MoviesViewController: SpinnerDisplayable {}
-extension MoviesViewController: MessageDisplayable {}
 
-extension MoviesViewController {
+//MARK: - Extensions Here
+extension SearchMediaViewController: SpinnerDisplayable {}
+extension SearchMediaViewController: MessageDisplayable {}
+
+
+extension SearchMediaViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.itemsMoviesCount
+        viewModel.numberOfItems
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemMovieTableViewCell.reuseIdentifier, for: indexPath) as? ItemMovieTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemSearchTableViewCell.reuseIdentifier, for: indexPath) as? ItemSearchTableViewCell else {
             return UITableViewCell()
+            
         }
-        
         let row = indexPath.row
-        let model = viewModel.getItemMoviesViewModel(row: row)
+        let model = viewModel.getItemSearchMediaViewModel(row: row)
         cell.configData(model: model)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
         tableView.tableFooterView?.isHidden = viewModel.lastPage
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movie = viewModel.getMovieViewModel(row: indexPath.row)
+        let movie = viewModel.getMediaViewModel(row: indexPath.row)
         coordinator.didSelectCell(movie: movie)
     }
 }
+
+

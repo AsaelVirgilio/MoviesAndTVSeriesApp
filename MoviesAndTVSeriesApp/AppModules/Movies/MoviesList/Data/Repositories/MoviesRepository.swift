@@ -18,6 +18,7 @@ struct MoviesRepository: MoviesRepositoryType {
         let moviesList = try await remoteService.request(url: url, type: MoviesDTO.self)
         url = URL(string: PathLocalized.createURL(path: .moviesTrending, id: pageNum))
         return moviesList.toDomain(idGenre: idGenre)
+        
     }
     
     

@@ -61,7 +61,7 @@ struct MoviesListFactory: ItemHomeMenuFactory, MoviesListFactoryType {
     }
     
     func makeSearchMediaController(navigation: NavigationType, parentCoordinator: ParentCoordinator) -> CoordinatorType {
-        let factory = SearchMediaControllerFactory(idGenre: itemMoviesGenresViewModel.idGenre)
+        let factory = SearchMediaControllerFactory(itemGenre: itemMoviesGenresViewModel)
         let controller = SearchMediaControllerCoordinator(navigationController: navigation, factory: factory, parentCoordinator: parentCoordinator)
         return controller
     }

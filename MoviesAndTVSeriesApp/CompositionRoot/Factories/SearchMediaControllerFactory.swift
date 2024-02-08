@@ -15,11 +15,11 @@ protocol SearchMediaControllerFactoryType {
 
 struct SearchMediaControllerFactory: SearchMediaControllerFactoryType {
     
-    let idGenre: Int
+    let itemGenre: ItemMoviesGenresViewModel
     
     func makeSearchMediaController(coordinator: SearchMediaSearchControllerCoordinator) -> UIViewController {
         
-        let coordinator = SearchMediaSearchController(coordinator: coordinator, idGenre: idGenre)
+        let coordinator = SearchMediaSearchController(coordinator: coordinator, itemGenre: itemGenre)
         return coordinator
     }
 

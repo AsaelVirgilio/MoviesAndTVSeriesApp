@@ -42,8 +42,11 @@ extension SearchMovieCoordinator: SearchMediaViewControllerCoordinator {
     
     func didSelectCell(movie: SearchResults) {
         //goto detail de search
+        
+        let movieDetailCoordinator = factory.makeMovieDetailCoordinator(navigation: navigationController, movie: movie, parentCoordinator: self)
+        addChildCoordinatorStar(movieDetailCoordinator)
     }
-
+    
 }
 
 extension SearchMovieCoordinator: ParentCoordinator {}

@@ -24,15 +24,16 @@ struct SearchMediaDTO: Codable {
 struct SearchResults: Codable {
     let adult: Bool
     let backdropPath: String?
-    let genreIDS: [Int]
+    let genreIDS: [Int]?
     let id: Int
     let originalLanguage, originalTitle, overview: String
-    let popularity: Double
+    let popularity: Double?
     let posterPath: String?
-    let releaseDate, title: String
-    let video: Bool
-    let voteAverage: Double
-    let voteCount: Int
+    let releaseDate: String?
+    let title: String
+    let video: Bool?
+    let voteAverage: Double?
+    let voteCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case adult

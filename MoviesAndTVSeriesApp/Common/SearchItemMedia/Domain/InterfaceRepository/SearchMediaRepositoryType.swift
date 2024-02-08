@@ -6,5 +6,5 @@
 //
 
 protocol SearchMediaRepositoryType {
-    func fetchSearchMediaResults(pageNum: Int) async throws -> [SearchResults]
+    func fetchSearchMediaResults(pageNum: Int) async throws -> (pages: Int, results: [SearchResults])
 }

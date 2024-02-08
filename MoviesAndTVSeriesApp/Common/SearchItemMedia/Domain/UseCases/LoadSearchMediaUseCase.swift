@@ -27,17 +27,14 @@ struct LoadSearchMediaUseCase: LoadSearchMediaUseCaseType {
     mutating func execute() async -> Result<[SearchResults], Error>{
         do {
             pageNum += 1
-            repositoryResult = try await searchMediaRepository.fetchSearchMediaResults(pageNum: pageNum)
+            let response = try await searchMediaRepository.fetchSearchMediaResults(pageNum: pageNum)
             
-            if repositoryResult.count <= 20 {
-                repositoryResult.removeAll()
-            }
+            repositoryResult = response.results
             
-            while repositoryResult.count <= 20 {
-                
+            while pageNum < response.pages {
                 pageNum += 1
                 let repository = try await searchMediaRepository.fetchSearchMediaResults(pageNum: pageNum)
-                repositoryResult.append(contentsOf: repository)
+                repositoryResult.append(contentsOf: repository.results)
             }
             
             return .success(repositoryResult)

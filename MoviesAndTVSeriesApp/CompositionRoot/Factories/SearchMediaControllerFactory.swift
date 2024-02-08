@@ -28,7 +28,10 @@ struct SearchMediaControllerFactory: SearchMediaControllerFactoryType {
                                     parentCoordinator: ParentCoordinator,
                                     searchInfo: [String: Any]) -> CoordinatorType {
         let factory = SearchMovieFactory(dicInfo: searchInfo)
-        return SearchMovieCoordinator(navigationController: navigation, factory: factory, parentCoordinator: parentCoordinator)
+        return SearchMovieCoordinator(
+            navigationController: navigation,
+            factory: factory,
+            parentCoordinator: parentCoordinator)
 
     }
 }

@@ -45,6 +45,10 @@ final class SearchMediaViewController: UITableViewController {
         stateController()
     }
     
+    deinit {
+        print("____> Saliendo")
+    }
+    
     //MARK: - Helpers
     private func configTableView() {
         tableView.separatorStyle = .none
@@ -89,10 +93,11 @@ extension SearchMediaViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemSearchTableViewCell.reuseIdentifier, for: indexPath) as? ItemSearchTableViewCell else {
             return UITableViewCell()
-            
         }
+        
         let row = indexPath.row
         let model = viewModel.getItemSearchMediaViewModel(row: row)
         cell.configData(model: model)

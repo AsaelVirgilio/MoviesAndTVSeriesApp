@@ -69,7 +69,8 @@ final class SearchMediaViewModel: SearchMediaViewModelType {
     }
     
     func getItemSearchMediaViewModel(row: Int) -> ItemSearchMediaViewModel {
-        makeItemSearchMediaViewModel(row: row)
+        checkAndLoadMoreSearches(row: row)
+        return makeItemSearchMediaViewModel(row: row)
     }
     
     func getMediaViewModel(row: Int) -> SearchResults {

@@ -28,9 +28,7 @@ struct LoadMoviesUseCase: LoadMoviesUseCaseType {
             pageNum += 1
             repositoryResult = try await moviesRepository.fetchFilteredMovies(pageNum: pageNum)
             
-            if repositoryResult.count <= 20 {
-                repositoryResult.removeAll()
-            }
+
             
             while repositoryResult.count <= 20 {
                 

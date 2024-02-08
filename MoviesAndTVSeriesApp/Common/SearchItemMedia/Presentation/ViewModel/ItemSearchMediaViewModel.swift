@@ -15,11 +15,11 @@ struct ItemSearchMediaViewModel {
     }
     
     var releaseDate: String {
-        media.releaseDate
+        media.releaseDate ?? ""
     }
     
     var voteAverage: Double {
-        media.voteAverage
+        media.voteAverage ?? 0.0
     }
     
     var posterPath: String {

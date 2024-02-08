@@ -27,7 +27,6 @@ final class SearchMediaControllerCoordinator: CoordinatorType {
         self.parentCoordinator = parentCoordinator
     }
     
-    
     func start() {
         let controller = factory.makeSearchMediaController(coordinator: self)
         controller.navigationItem.searchController = createSearchBar(controller: controller)
@@ -50,12 +49,10 @@ final class SearchMediaControllerCoordinator: CoordinatorType {
 extension SearchMediaControllerCoordinator: SearchMediaSearchControllerCoordinator {
     
     func sendToSearch(searchInfo: [String : Any]) {
-        print("-----> Word to search \(searchInfo)")
-        
         let searchMediaController = factory.makeSearchMovieCoordinator(navigation: navigationController, parentCoordinator: self, searchInfo: searchInfo)
         addChildCoordinatorStar(searchMediaController)
     }
-
+    
 }
 
 extension SearchMediaControllerCoordinator: ParentCoordinator {}

@@ -11,9 +11,11 @@ import Combine
 protocol SearchMovieFactoryType {
     func makeSearchMovieFactory(coordinator: SearchMediaViewControllerCoordinator) -> UIViewController
     var dicInfo: [String:Any] {get set}
-//    func makeMovieDetailCoordinator(navigation: NavigationType,
-//                                    movie: SearchResults,
-//                                    parentCoordinator: ParentCoordinator) -> CoordinatorType
+    
+    func makeMovieDetailCoordinator(navigation: NavigationType,
+                                    movie: SearchResults,
+                                    parentCoordinator: ParentCoordinator) -> CoordinatorType
+    
 }
 
 struct SearchMovieFactory: SearchMovieFactoryType {
@@ -37,9 +39,29 @@ struct SearchMovieFactory: SearchMovieFactoryType {
         return controller
     }
     
-//    func makeMovieDetailCoordinator(navigation: NavigationType, movie: SearchResults, parentCoordinator: ParentCoordinator) -> CoordinatorType {
-//        print("Ir a detalle")
-//    }
+    func makeMovieDetailCoordinator(
+        navigation: NavigationType,
+        movie: SearchResults,
+        parentCoordinator: ParentCoordinator
+    ) -> CoordinatorType {
+        let movie = Movie(adult: movie.adult,
+                          backdropPath: movie.backdropPath,
+                          id: movie.id,
+                          title: movie.title,
+                          originalTitle: movie.originalTitle,
+                          overview: movie.overview,
+                          posterPath: movie.posterPath,
+                          genreIDS: movie.genreIDS ?? [0],
+                          releaseDate: movie.releaseDate ?? "",
+                          voteAverage: movie.voteAverage ?? 0.0
+        )
+        let factory = MovieDetailFactory(movie: movie)
+        
+        return MovieDetailCoordinator(navigationController: navigation,
+                                      factoryDetail: factory,
+                                      parentCoordinator: parentCoordinator)
+
+    }
     
     
 }

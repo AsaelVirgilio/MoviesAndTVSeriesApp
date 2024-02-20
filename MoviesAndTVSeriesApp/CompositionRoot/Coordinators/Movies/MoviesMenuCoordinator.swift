@@ -27,10 +27,12 @@ final class MoviesMenuCoordinator: CoordinatorType {
 }
 
 extension MoviesMenuCoordinator: MoviesMenuViewControllerCoordinator {
+    
     func selectedMovieGenreCell(genre: ItemMoviesGenresViewModel) {
         
         let moviesListCoordinator = moviesMenuFactory.makeMoviesListCoordinator(navigation: navigationController, genre: genre, parentCoordinator: self)
         addChildCoordinatorStar(moviesListCoordinator)
+   
     }
 }
 

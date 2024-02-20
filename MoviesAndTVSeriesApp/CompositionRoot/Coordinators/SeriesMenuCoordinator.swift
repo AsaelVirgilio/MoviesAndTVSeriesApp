@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftUI
 
 final class SeriesMenuCoordinator: CoordinatorType {
     var navigationController: NavigationType
@@ -18,10 +18,10 @@ final class SeriesMenuCoordinator: CoordinatorType {
         self.seriesFactory = seriesFactory
     }
     func start() {
-        let controller = seriesFactory.makeModule(coordinator: self)
-        navigationController.pushViewController(controller, animated: false)
+        let holder = NavStackHolder()
+        let controller = seriesFactory.makeModule(holder: holder)
+        navigationController.pushViewController(controller.viewController, animated: false)
         seriesFactory.makeTabBarItem(navigation: navigationController)
     }
 
 }
-extension SeriesMenuCoordinator: LoginViewController2Coordinator {}

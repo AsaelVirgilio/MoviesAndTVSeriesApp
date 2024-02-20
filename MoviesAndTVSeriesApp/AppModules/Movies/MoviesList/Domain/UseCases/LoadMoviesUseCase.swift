@@ -28,10 +28,10 @@ struct LoadMoviesUseCase: LoadMoviesUseCaseType {
             pageNum += 1
             repositoryResult = try await moviesRepository.fetchFilteredMovies(pageNum: pageNum)
             
-
-            
             while repositoryResult.count <= 20 {
-                
+                if pageNum == 1 {
+                    repositoryResult.removeAll()
+                }
                 pageNum += 1
                 let repository = try await moviesRepository.fetchFilteredMovies(pageNum: pageNum)
                 repositoryResult.append(contentsOf: repository)

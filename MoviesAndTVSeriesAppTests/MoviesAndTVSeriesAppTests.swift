@@ -2,11 +2,10 @@
 //  MoviesAndTVSeriesAppTests.swift
 //  MoviesAndTVSeriesAppTests
 //
-//  Created by Asael Virgilio on 18/01/24.
+//  Created by Asael Virgilio on 19/02/24.
 //
 
 import XCTest
-@testable import MoviesAndTVSeriesApp
 
 final class MoviesAndTVSeriesAppTests: XCTestCase {
 
@@ -28,7 +27,7 @@ final class MoviesAndTVSeriesAppTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }

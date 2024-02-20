@@ -10,7 +10,7 @@ extension SearchMediaDTO {
     func toDomain(idGenre: Int) -> (pages: Int, results: [SearchResults]){
         var moviesFiltered = results
         
-        if idGenre != AppLocalized.allMoviesGenresId {
+        if idGenre != AppLocalized.allGenresId {
             
             moviesFiltered = results.filter {
                 $0.genreIDS?.contains(idGenre) as? Bool ?? false

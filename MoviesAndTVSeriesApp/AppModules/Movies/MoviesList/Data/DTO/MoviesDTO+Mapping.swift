@@ -12,7 +12,7 @@ extension MoviesDTO {
     func toDomain(idGenre: Int) -> [Movie]{
         var moviesFiltered = results
         
-        if idGenre != AppLocalized.allMoviesGenresId {
+        if idGenre != AppLocalized.allGenresId {
             
             moviesFiltered = results.filter {
                 $0.genreIDS.contains(idGenre)

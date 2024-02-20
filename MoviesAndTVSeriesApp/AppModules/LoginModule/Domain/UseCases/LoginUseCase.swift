@@ -13,9 +13,9 @@ protocol LoginUseCaseType {
 
 struct LoginUseCase: LoginUseCaseType {
     
-    let loginRepository: LoginRepository
+    let loginRepository: LoginRepositoryType
     
-    init(loginRepository: LoginRepository) {
+    init(loginRepository: LoginRepositoryType) {
         self.loginRepository = loginRepository
     }
     

@@ -11,7 +11,6 @@ import Combine
 protocol MoviesGenresViewModelType: BaseViewModelType {
     var itemsMovieGenresCount: Int { get }
     func getItemMovieGenreViewModel(row: Int) -> ItemMoviesGenresViewModel
-//    func getGenreMovie(row: Int) -> MGenre
 }
 
 final class MoviesGenresViewModel: MoviesGenresViewModelType {
@@ -56,7 +55,7 @@ final class MoviesGenresViewModel: MoviesGenresViewModelType {
         }
     }
     private func addAllGenresOption() {
-        let allGenres = MGenre(id: AppLocalized.allMoviesGenresId, name: AppLocalized.allMoviesGenresName)
+        let allGenres = MGenre(id: AppLocalized.allGenresId, name: AppLocalized.allMoviesGenresName)
         self.genres.insert(allGenres, at: 0)
     }
     func getItemMovieGenreViewModel(row: Int) -> ItemMoviesGenresViewModel {
@@ -66,9 +65,5 @@ final class MoviesGenresViewModel: MoviesGenresViewModelType {
         let genre = genres[row]
         return ItemMoviesGenresViewModel(genre: genre)
     }
-    
-//    func getGenreMovie(row: Int) -> MGenre {
-//        self.genres[row]
-//    }
     
 }

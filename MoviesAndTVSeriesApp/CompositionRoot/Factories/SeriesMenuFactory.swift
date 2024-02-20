@@ -9,15 +9,24 @@ import UIKit
 import Combine
 
 protocol SeriesMenuFactoryType{
-    func makeModule(coordinator: LoginViewController2Coordinator) -> UIViewController
+    func makeModule(holder: NavStackHolder) -> SeriesGenresViewController
     func makeTabBarItem(navigation: NavigationType)
 }
 
-struct SeriesMenuFactory: SeriesMenuFactoryType, LoginViewController2Coordinator {
+struct SeriesMenuFactory: SeriesMenuFactoryType {
     let appDIContainer: AppDIContainer?
     
-    func makeModule(coordinator: LoginViewController2Coordinator) -> UIViewController {
-        let controller = LoginViewController2(coordinator: self)
+    func makeModule(holder: NavStackHolder) -> SeriesGenresViewController {
+        
+        let apiClient = APIClientService()
+        let seriesGenresRepository = SeriesGenresRepository(remoteService: apiClient)
+        let loadSeriesGenresUseCase = LoadSeriesGenresUseCase(seriesGenresRepository: seriesGenresRepository)
+        let viewModel = SeriesGenresViewModel(
+            loadSeriesGenresUseCase: loadSeriesGenresUseCase
+        )
+        let controller = SeriesGenresViewController(
+            holder: holder,
+            viewModel: viewModel)
         return controller
     }
     func makeTabBarItem(navigation: NavigationType) {

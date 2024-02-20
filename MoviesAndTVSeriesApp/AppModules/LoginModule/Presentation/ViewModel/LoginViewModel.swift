@@ -8,9 +8,7 @@
 import Combine
 import UIKit
 
-protocol LoginViewModelType {
-    var state: PassthroughSubject<StateController, Never> { get }
-    func viewDidLoad()
+protocol LoginViewModelType: BaseViewModelType {
     
     func validateUser(credential: UserCredential)
     func getUser() -> UserDTO

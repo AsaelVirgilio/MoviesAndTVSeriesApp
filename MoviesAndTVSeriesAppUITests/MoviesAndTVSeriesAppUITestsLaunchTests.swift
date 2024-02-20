@@ -2,7 +2,7 @@
 //  MoviesAndTVSeriesAppUITestsLaunchTests.swift
 //  MoviesAndTVSeriesAppUITests
 //
-//  Created by Asael Virgilio on 18/01/24.
+//  Created by Asael Virgilio on 19/02/24.
 //
 
 import XCTest

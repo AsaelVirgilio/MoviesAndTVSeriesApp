@@ -23,7 +23,21 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E65AD3B3-74F8-4747-B81B-C0E5A63B46BD"
+            uuid = "1A7C5F33-B1B6-47A3-9496-4A5848F666E0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoviesAndTVSeriesApp/CompositionRoot/Coordinators/Navigation/Navigation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D441FF39-5724-46E5-883E-3EA4AFAFDD57"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -39,16 +53,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1A7C5F33-B1B6-47A3-9496-4A5848F666E0"
+            uuid = "29916749-DEE5-4B86-BDD6-18129158E9B3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesAndTVSeriesApp/CompositionRoot/Coordinators/Navigation/Navigation.swift"
+            filePath = "MoviesAndTVSeriesApp/AppModules/Series/SeriesMenu/Presentation/ViewController/SeriesGenresViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "navigationController(_:didShow:animated:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "buildView(rowIndex:geometry:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "29916749-DEE5-4B86-BDD6-18129158E9B3 - 6f0afd1f0862cd17"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MoviesAndTVSeriesApp.SeriesGenresViewController.buildView(rowIndex: Swift.Int, geometry: SwiftUI.GeometryProxy) -&gt; Swift.Optional&lt;MoviesAndTVSeriesApp.RowView&gt;"
+                  moduleName = "MoviesAndTVSeriesApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asael/Documents/Swift/Desarrollos/06-CleanArchitecture/MoviesAndTVSeriesApp/MoviesAndTVSeriesApp/AppModules/Series/SeriesMenu/Presentation/ViewController/SeriesGenresViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "676">
+               </Location>
+               <Location
+                  uuid = "29916749-DEE5-4B86-BDD6-18129158E9B3 - 6f0afd1f0862cd17"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MoviesAndTVSeriesApp.SeriesGenresViewController.buildView(rowIndex: Swift.Int, geometry: SwiftUI.GeometryProxy) -&gt; Swift.Optional&lt;MoviesAndTVSeriesApp.RowView&gt;"
+                  moduleName = "MoviesAndTVSeriesApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asael/Documents/Swift/Desarrollos/06-CleanArchitecture/MoviesAndTVSeriesApp/MoviesAndTVSeriesApp/AppModules/Series/SeriesMenu/Presentation/ViewController/SeriesGenresViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "612">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4FECD759-394F-48CF-AEF8-0C51AAC32B52"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoviesAndTVSeriesApp/AppModules/Series/SeriesMenu/Presentation/ViewModel/SeriesGenresViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "onAppear()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1AAD91A1-F3E1-49C9-9C2F-DEC6B90C52D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoviesAndTVSeriesApp/AppModules/Series/SeriesMenu/Presentation/ViewModel/SeriesGenresViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "onAppear()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

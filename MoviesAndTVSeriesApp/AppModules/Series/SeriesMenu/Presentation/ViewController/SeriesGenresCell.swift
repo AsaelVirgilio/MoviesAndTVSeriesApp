@@ -9,22 +9,20 @@ import SwiftUI
 
 struct SeriesGenresCell: View {
     let title: String
+    
     var body: some View {
         VStack {
-//            RoundedRectangle(cornerRadius: 12).foregroundColor(.random)
             Image(title, bundle: nil)
-//                .scaledToFit()
+                .resizable()
                 .scaledToFill()
-//                .frame(width: CGFloat(100), height: CGFloat(200), alignment: .center)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: CGFloat(100), height: CGFloat(100), alignment: .center)
+            
             Text(title)
                 .font(.title2)
         }
         
     }
-}
-
-#Preview {
-    SeriesGenresCell(title: "Hello world")
 }
 
 extension Color {

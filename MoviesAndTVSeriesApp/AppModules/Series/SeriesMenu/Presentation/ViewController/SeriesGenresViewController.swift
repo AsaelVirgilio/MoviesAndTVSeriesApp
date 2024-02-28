@@ -11,35 +11,51 @@ struct SeriesGenresViewController: ViewControllable {
     var holder: NavStackHolder
     
     @ObservedObject private var viewModel: SeriesGenresViewModel
-    let itemPerRow: CGFloat = 1
+    private let createSeriesListView: CreateSeriesListView
+    
+    @State private var isShowingDetailView = false
+    @State private var genreName = ""
+    
+    let itemPerRow: CGFloat = 2
     let horizontalSpacing: CGFloat = 16
     let height: CGFloat = 300
-//    let cards: [Card] = MockStore.cards
     
-    init(holder: NavStackHolder,
+    init(createSeriesListView: CreateSeriesListView,
+         holder: NavStackHolder,
          viewModel: SeriesGenresViewModel
     ) {
         self.holder = holder
         self.viewModel = viewModel
+        self.createSeriesListView = createSeriesListView
         viewModel.onAppear()
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 8) {
-                    ForEach(0..<(viewModel.numberOfGenres ?? 0)) { i in
-                        if i % Int(itemPerRow) == 0 {
-                            buildView(rowIndex: i, geometry: geometry)
+        
+            GeometryReader { geometry in
+                NavigationView {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 8) {
+                        ForEach(0..<(viewModel.numberOfGenres ?? 0)) { i in
+                            if i % Int(itemPerRow) == 0 {
+                                NavigationLink {
+                                    createSeriesListView.create(idGenre: viewModel.genres[i].idGenre)
+                                } label: {
+                                    buildView(rowIndex: i, geometry: geometry)
+                                }
+                                
+                            }
                         }
                     }
-                }
-                .onAppear {
-                    viewModel.onAppear()
-                }.refreshable {
-                    viewModel.onAppear()
+                    .onAppear {
+                        viewModel.onAppear()
+                    }.refreshable {
+                        viewModel.onAppear()
+                    }
                 }
             }
+            .navigationTitle(AppLocalized.seriesTapTitle)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     
@@ -51,7 +67,7 @@ struct SeriesGenresViewController: ViewControllable {
             }
         }
         if !rowCards.isEmpty {
-            return RowView(cards: rowCards, width: getWidth(geometry: geometry), height: height, horizontalSpacing: horizontalSpacing)
+            return RowView(cards: rowCards, width: 100, height: height, horizontalSpacing: horizontalSpacing)
         }
         
         return nil
@@ -64,19 +80,12 @@ struct SeriesGenresViewController: ViewControllable {
     
 }
 
-//#Preview {
-////    SeriesGenresViewController()
-//}
-//struct Card: Identifiable {
-//    let id = UUID()
-//    let title: String
-//}
-
 struct RowView: View {
     let cards: [ItemSeriesGenresViewModel]
     let width: CGFloat
     let height: CGFloat
     let horizontalSpacing: CGFloat
+    
     var body: some View {
         HStack(spacing: horizontalSpacing) {
             ForEach(cards, id: \.idGenre) { genre in

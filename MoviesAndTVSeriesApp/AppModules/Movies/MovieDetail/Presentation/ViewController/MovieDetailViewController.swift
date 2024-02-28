@@ -8,7 +8,9 @@
 import Combine
 import UIKit
 
-protocol MovieDetailViewControllerCoordinator: VideoTrailerViewControllerCoordinator, CastViewControllerCoordinator {}
+protocol MovieDetailViewControllerCoordinator: VideoTrailerViewControllerCoordinator, CastViewControllerCoordinator {
+    func didFinishDetail()
+}
 
 final class MovieDetailViewController: UIViewController {
     //MARK: - Public Properties
@@ -77,6 +79,7 @@ final class MovieDetailViewController: UIViewController {
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.sizeToFit()
+        label.preferredMaxLayoutWidth = 200
         return label
     }()
     
@@ -105,6 +108,10 @@ final class MovieDetailViewController: UIViewController {
         configUserInterface()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        coordinator.didFinishDetail()
+    }
     //MARK: - Helpers
     private func configUserInterface() {
         view.backgroundColor = .systemBackground
@@ -146,7 +153,7 @@ final class MovieDetailViewController: UIViewController {
             mainStack.bottomAnchor.constraint(equalTo: viewContainer.bottomAnchor),
             
             
-            movieOverview.heightAnchor.constraint(equalToConstant: 500),
+            movieOverview.heightAnchor.constraint(equalToConstant: 200),
             
             movieImage.heightAnchor.constraint(equalToConstant: 200),
             

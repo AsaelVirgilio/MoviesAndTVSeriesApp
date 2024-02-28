@@ -36,6 +36,10 @@ final class MovieDetailCoordinator: CoordinatorType {
 }
 
 extension MovieDetailCoordinator: MovieDetailViewControllerCoordinator {
+    func didFinishDetail() {
+        print("---------->  eliminar Detail")
+    }
+    
 
     //MARK: - VideoTrailerViewControllerCoordinator
     func didSelectExit() {

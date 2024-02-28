@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Combine
 
 protocol SeriesMenuFactoryType{
     func makeModule(holder: NavStackHolder) -> SeriesGenresViewController
@@ -25,10 +24,12 @@ struct SeriesMenuFactory: SeriesMenuFactoryType {
             loadSeriesGenresUseCase: loadSeriesGenresUseCase
         )
         let controller = SeriesGenresViewController(
+            createSeriesListView: SeriesListFactory(), 
             holder: holder,
             viewModel: viewModel)
         return controller
     }
+    
     func makeTabBarItem(navigation: NavigationType) {
         makeItemHomeMenu(navigation: navigation, title: AppLocalized.seriesTapTitle, image: AppLocalized.seriesTapIcon)
     }

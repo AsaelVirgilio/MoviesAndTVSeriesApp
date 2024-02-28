@@ -13,8 +13,6 @@ struct SeriesGenresViewController: ViewControllable {
     @ObservedObject private var viewModel: SeriesGenresViewModel
     private let createSeriesListView: CreateSeriesListView
     
-    @State private var isShowingDetailView = false
-    @State private var genreName = ""
     
     let itemPerRow: CGFloat = 2
     let horizontalSpacing: CGFloat = 16

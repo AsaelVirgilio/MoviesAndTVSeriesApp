@@ -7,9 +7,20 @@
 
 import SwiftUI
 
-struct SeriesListView: View {
+struct SeriesListView: ViewControllable {
+    
     @ObservedObject var viewModel: SeriesListViewModel
     var imageDataUseCase: ImageDataUseCaseType
+    var holder: NavStackHolder
+    
+    init(viewModel: SeriesListViewModel,
+         imageDataUseCase: ImageDataUseCaseType,
+         holder: NavStackHolder
+    ) {
+        self.viewModel = viewModel
+        self.imageDataUseCase = imageDataUseCase
+        self.holder = holder
+    }
     
     var body: some View {
         VStack {

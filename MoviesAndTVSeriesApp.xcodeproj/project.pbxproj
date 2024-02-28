@@ -86,7 +86,6 @@
 		F01333B92B76C944009420A5 /* ItemSeriesGenresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01333B82B76C944009420A5 /* ItemSeriesGenresViewModel.swift */; };
 		F01333BD2B76D417009420A5 /* SeriesGenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01333BC2B76D417009420A5 /* SeriesGenresViewController.swift */; };
 		F01333BF2B76EBBB009420A5 /* SeriesGenresCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01333BE2B76EBBB009420A5 /* SeriesGenresCell.swift */; };
-		F01333C12B76ED81009420A5 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01333C02B76ED81009420A5 /* Serie.swift */; };
 		F01333C52B770EC2009420A5 /* NavStackHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01333C42B770EC2009420A5 /* NavStackHolder.swift */; };
 		F01333C72B770EF6009420A5 /* ViewControllable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01333C62B770EF6009420A5 /* ViewControllable+Extension.swift */; };
 		F01333C92B770F53009420A5 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01333C82B770F53009420A5 /* HostingController.swift */; };
@@ -180,6 +179,11 @@
 		F0AA24492B868F7D00E336B0 /* SeriesListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA24482B868F7D00E336B0 /* SeriesListFactory.swift */; };
 		F0AA244C2B86988200E336B0 /* CreateSeriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA244B2B86988200E336B0 /* CreateSeriesListView.swift */; };
 		F0AA24502B869DE200E336B0 /* SeriesListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA244F2B869DE200E336B0 /* SeriesListItemView.swift */; };
+		F0AA248C2B8ECE5900E336B0 /* SeriesGenresCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA248B2B8ECE5900E336B0 /* SeriesGenresCollection.swift */; };
+		F0AA24902B8EDDE200E336B0 /* SeriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA248F2B8EDDE200E336B0 /* SeriesCard.swift */; };
+		F0AA24922B8EDE5900E336B0 /* SeriesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA24912B8EDE5900E336B0 /* SeriesCollectionCell.swift */; };
+		F0AA24952B8EE89900E336B0 /* SwiftUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA24942B8EE89900E336B0 /* SwiftUICollectionViewCell.swift */; };
+		F0AA24DB2B8FDAA500E336B0 /* SeriesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA24DA2B8FDAA500E336B0 /* SeriesListCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,7 +292,6 @@
 		F01333B82B76C944009420A5 /* ItemSeriesGenresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSeriesGenresViewModel.swift; sourceTree = "<group>"; };
 		F01333BC2B76D417009420A5 /* SeriesGenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesGenresViewController.swift; sourceTree = "<group>"; };
 		F01333BE2B76EBBB009420A5 /* SeriesGenresCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesGenresCell.swift; sourceTree = "<group>"; };
-		F01333C02B76ED81009420A5 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
 		F01333C42B770EC2009420A5 /* NavStackHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavStackHolder.swift; sourceTree = "<group>"; };
 		F01333C62B770EF6009420A5 /* ViewControllable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewControllable+Extension.swift"; sourceTree = "<group>"; };
 		F01333C82B770F53009420A5 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
@@ -386,6 +389,11 @@
 		F0AA24482B868F7D00E336B0 /* SeriesListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListFactory.swift; sourceTree = "<group>"; };
 		F0AA244B2B86988200E336B0 /* CreateSeriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSeriesListView.swift; sourceTree = "<group>"; };
 		F0AA244F2B869DE200E336B0 /* SeriesListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListItemView.swift; sourceTree = "<group>"; };
+		F0AA248B2B8ECE5900E336B0 /* SeriesGenresCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesGenresCollection.swift; sourceTree = "<group>"; };
+		F0AA248F2B8EDDE200E336B0 /* SeriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCard.swift; sourceTree = "<group>"; };
+		F0AA24912B8EDE5900E336B0 /* SeriesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCollectionCell.swift; sourceTree = "<group>"; };
+		F0AA24942B8EE89900E336B0 /* SwiftUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICollectionViewCell.swift; sourceTree = "<group>"; };
+		F0AA24DA2B8FDAA500E336B0 /* SeriesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1055,6 +1063,7 @@
 				F0AA244A2B86987600E336B0 /* UI */,
 				F01333C32B770EA2009420A5 /* Navigation */,
 				F0AA24482B868F7D00E336B0 /* SeriesListFactory.swift */,
+				F0AA24DA2B8FDAA500E336B0 /* SeriesListCoordinator.swift */,
 			);
 			path = Series;
 			sourceTree = "<group>";
@@ -1808,9 +1817,8 @@
 		F0A867A82B5B6C0300801F89 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F01333BC2B76D417009420A5 /* SeriesGenresViewController.swift */,
-				F01333BE2B76EBBB009420A5 /* SeriesGenresCell.swift */,
-				F01333C02B76ED81009420A5 /* Serie.swift */,
+				F0AA24932B8EE0DE00E336B0 /* SeriesUI */,
+				F0AA248D2B8EDD7700E336B0 /* SeriesCollection */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2004,6 +2012,42 @@
 				F0AA244F2B869DE200E336B0 /* SeriesListItemView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		F0AA248D2B8EDD7700E336B0 /* SeriesCollection */ = {
+			isa = PBXGroup;
+			children = (
+				F0AA248E2B8EDD8A00E336B0 /* Cell */,
+				F0AA248B2B8ECE5900E336B0 /* SeriesGenresCollection.swift */,
+			);
+			path = SeriesCollection;
+			sourceTree = "<group>";
+		};
+		F0AA248E2B8EDD8A00E336B0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F0AA24D92B8FCB6F00E336B0 /* CellConf */,
+				F0AA248F2B8EDDE200E336B0 /* SeriesCard.swift */,
+				F0AA24912B8EDE5900E336B0 /* SeriesCollectionCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F0AA24932B8EE0DE00E336B0 /* SeriesUI */ = {
+			isa = PBXGroup;
+			children = (
+				F01333BC2B76D417009420A5 /* SeriesGenresViewController.swift */,
+				F01333BE2B76EBBB009420A5 /* SeriesGenresCell.swift */,
+			);
+			path = SeriesUI;
+			sourceTree = "<group>";
+		};
+		F0AA24D92B8FCB6F00E336B0 /* CellConf */ = {
+			isa = PBXGroup;
+			children = (
+				F0AA24942B8EE89900E336B0 /* SwiftUICollectionViewCell.swift */,
+			);
+			path = CellConf;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2251,6 +2295,7 @@
 				F00BFA6C2B65D693003A7AFB /* MovieDetailRepositoryType.swift in Sources */,
 				F03C7C8C2B6C2BF8009F4579 /* ItemSelectedPhoto.swift in Sources */,
 				F0A867D52B5F4FDB00801F89 /* Navigation+UINavigationControllerDelegate.swift in Sources */,
+				F0AA24902B8EDDE200E336B0 /* SeriesCard.swift in Sources */,
 				F00BFA6A2B65CF98003A7AFB /* LoadMovieDetailUseCase.swift in Sources */,
 				F00BFA702B65DBC9003A7AFB /* MovieDetailViewModel.swift in Sources */,
 				F0A867B12B5B73BB00801F89 /* HttpResponseStatus.swift in Sources */,
@@ -2262,6 +2307,7 @@
 				F01333C72B770EF6009420A5 /* ViewControllable+Extension.swift in Sources */,
 				F0A867062B5985E900801F89 /* LoginViewController2.swift in Sources */,
 				F00BFA322B617DFF003A7AFB /* LoadMoviesUseCase.swift in Sources */,
+				F0AA24922B8EDE5900E336B0 /* SeriesCollectionCell.swift in Sources */,
 				F0A867632B59ED3200801F89 /* UserDTO.swift in Sources */,
 				F0A867752B5AC67B00801F89 /* LoginViewModel.swift in Sources */,
 				F0A867C82B5C380500801F89 /* Reusable.swift in Sources */,
@@ -2271,6 +2317,8 @@
 				F0AA24432B865A1500E336B0 /* LoadSeriesListUseCase.swift in Sources */,
 				F00BFAE12B69D5C7003A7AFB /* LoadPhotosPersonUseCase.swift in Sources */,
 				F01333B92B76C944009420A5 /* ItemSeriesGenresViewModel.swift in Sources */,
+				F0AA24DB2B8FDAA500E336B0 /* SeriesListCoordinator.swift in Sources */,
+				F0AA248C2B8ECE5900E336B0 /* SeriesGenresCollection.swift in Sources */,
 				F038678C2B731E8000117E23 /* SearchMediaControllerFactory.swift in Sources */,
 				F00BFAD92B69CA5B003A7AFB /* PhotosPersonDTO.swift in Sources */,
 				F0AA24502B869DE200E336B0 /* SeriesListItemView.swift in Sources */,
@@ -2307,7 +2355,6 @@
 				F00BFAE72B69DE93003A7AFB /* PhotosPersonViewController.swift in Sources */,
 				F01333BF2B76EBBB009420A5 /* SeriesGenresCell.swift in Sources */,
 				F00BFADB2B69CB27003A7AFB /* PhotosPersonDTO+Mapping.swift in Sources */,
-				F01333C12B76ED81009420A5 /* Serie.swift in Sources */,
 				F0A867862B5AED9100801F89 /* ViewValues.swift in Sources */,
 				F03C7C942B6C4546009F4579 /* SelectedPhotoCoordinator.swift in Sources */,
 				F01333C92B770F53009420A5 /* HostingController.swift in Sources */,
@@ -2331,6 +2378,7 @@
 				F0A8676C2B59F06A00801F89 /* APILogin.swift in Sources */,
 				F0AA244C2B86988200E336B0 /* CreateSeriesListView.swift in Sources */,
 				F0A867402B59A0A300801F89 /* LoginCoordinator.swift in Sources */,
+				F0AA24952B8EE89900E336B0 /* SwiftUICollectionViewCell.swift in Sources */,
 				F0A867C32B5C350F00801F89 /* MoviesMenuViewController.swift in Sources */,
 				F00BFA6E2B65D722003A7AFB /* MovieDetailRepository.swift in Sources */,
 				F03C7C8E2B6C2CEC009F4579 /* SelectedPhotoPersonViewController.swift in Sources */,

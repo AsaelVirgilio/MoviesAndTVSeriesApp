@@ -7,17 +7,25 @@
 
 import Foundation
 
-class SeriesListFactory: CreateSeriesListView {
+protocol SeriesListFactoryType{
+    func makeModule(holder: NavStackHolder) -> SeriesListView
+}
+
+//class SeriesListFactory: CreateSeriesListView {
+struct SeriesListFactory: SeriesListFactoryType {
     
-    func create(idGenre: Int) -> SeriesListView {
+//    func create(idGenre: Int) -> SeriesListView {
+    var genreItem: ItemSeriesGenresViewModel
+    
+    func makeModule(holder: NavStackHolder) -> SeriesListView {
         
         let apiClient = APIClientService()
         let remoteImageDataService = APIClientService()
         let localDataImageService = LocalDataImageService()
-        let seriesListRepository = SeriesListRepository(apiService: apiClient, idGenre: idGenre)
+        let seriesListRepository = SeriesListRepository(apiService: apiClient, idGenre: genreItem.idGenre)
         let imageDataUseCase = ImageDataUseCase(imageDataRepository: ImageDataRepository(remoteDataService: remoteImageDataService, localDataCache: localDataImageService))
         let loadSeriesListUseCase = LoadSeriesListUseCase(repositoryList: seriesListRepository)
         let seriesListViewModel = SeriesListViewModel(listUseCase: loadSeriesListUseCase)
-        return SeriesListView(viewModel: seriesListViewModel, imageDataUseCase: imageDataUseCase)
+        return SeriesListView(viewModel: seriesListViewModel, imageDataUseCase: imageDataUseCase, holder: holder)
     }
 }

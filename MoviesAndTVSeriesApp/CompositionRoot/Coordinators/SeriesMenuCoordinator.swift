@@ -11,6 +11,7 @@ import SwiftUI
 final class SeriesMenuCoordinator: CoordinatorType {
     var navigationController: NavigationType
     private var seriesFactory: SeriesMenuFactoryType
+    var childCoordinators: [CoordinatorType] = []
     
     init(navigationController: NavigationType,
          seriesFactory: SeriesMenuFactoryType) {
@@ -18,10 +19,18 @@ final class SeriesMenuCoordinator: CoordinatorType {
         self.seriesFactory = seriesFactory
     }
     func start() {
-        let holder = NavStackHolder()
-        let controller = seriesFactory.makeModule(holder: holder)
-        navigationController.pushViewController(controller.viewController, animated: false)
+        let controller = seriesFactory.makeModule(coordinator: self)
+        navigationController.pushViewController(controller, animated: false)
         seriesFactory.makeTabBarItem(navigation: navigationController)
     }
 
 }
+
+extension SeriesMenuCoordinator: SeriesGenresCollectionCoordinator {
+    func selectedSerieGenreCell(genre: ItemSeriesGenresViewModel) {
+        let seriesListCoordinator = seriesFactory.makeSeriesListCoordinator(navigation: navigationController, genre: genre, parentCoordinator: self)
+        addChildCoordinatorStar(seriesListCoordinator)
+    }
+}
+
+extension SeriesMenuCoordinator: ParentCoordinator {}

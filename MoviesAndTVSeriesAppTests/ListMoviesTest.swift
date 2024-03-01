@@ -20,9 +20,9 @@ final class ListMoviesTest: XCTestCase {
     
     class MoviesRepositoryStub: MoviesRepositoryType {
         
-        func fetchFilteredMovies(pageNum: Int) async throws -> [Movie] {
+        func fetchMovies(pageNum: Int) async throws -> [Movie] {
             return  [
-                Movie(adult: true, backdropPath: "", id: 1, title: "", originalTitle: "", overview: "", posterPath: "", genreIDS: [0], releaseDate: "", voteAverage: 0.0),
+                Movie(adult: true, backdropPath: "", id: 1, title: "", originalTitle: "", overview: "", posterPath: "", genreIDS: [80], releaseDate: "", voteAverage: 0.0),
                 Movie(adult: true, backdropPath: "", id: 2, title: "", originalTitle: "", overview: "", posterPath: "", genreIDS: [0], releaseDate: "", voteAverage: 0.0),
                 Movie(adult: true, backdropPath: "", id: 3, title: "", originalTitle: "", overview: "", posterPath: "", genreIDS: [0], releaseDate: "", voteAverage: 0.0),
                 
@@ -36,14 +36,13 @@ final class ListMoviesTest: XCTestCase {
     func testExample() async {
         let moviesRepository = MoviesRepositoryStub()
         //Given
-        var sut = LoadMoviesUseCase(moviesRepository: moviesRepository, pageNum: 0)
+        var sut = LoadMoviesUseCase(moviesRepository: moviesRepository, pageNum: 0, idGenre: 80)
         
         let result = await sut.execute()
         
         switch result {
             
         case .success(let response):
-            print("-----> Response \(response)")
             let count = response.count
             let waiting = 21
             XCTAssertEqual(count, waiting)

@@ -6,5 +6,5 @@
 //
 
 protocol MoviesRepositoryType {
-    mutating func fetchFilteredMovies(pageNum: Int) async throws -> [Movie]
+    mutating func fetchMovies(pageNum: Int) async throws -> [Movie]
 }

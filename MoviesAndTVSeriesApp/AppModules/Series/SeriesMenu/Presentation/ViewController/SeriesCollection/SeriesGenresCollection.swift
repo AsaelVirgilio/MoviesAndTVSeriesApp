@@ -36,7 +36,6 @@ final class SeriesGenresCollection: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configCollectionView()
-//        viewModel.onAppear()
         stateController()
     }
 
@@ -74,7 +73,7 @@ extension SeriesGenresCollection {
     }
 }
 extension SeriesGenresCollection {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 240, height: 320)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 150, height: 150)
+//    }
 }

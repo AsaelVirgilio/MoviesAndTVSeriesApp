@@ -41,10 +41,13 @@ struct MoviesListFactory: ItemHomeMenuFactory, MoviesListFactoryType {
         let moviesRepository = 
         MoviesRepository(
             remoteService: apiClient,
-            url: url,
+            url: url
+        )
+        let loadMoviesUseCase = LoadMoviesUseCase(
+            moviesRepository: moviesRepository,
+            pageNum: 0,
             idGenre: itemMoviesGenresViewModel.idGenre
         )
-        let loadMoviesUseCase = LoadMoviesUseCase(moviesRepository: moviesRepository, pageNum: 0)
         let moviesViewModel = MoviesViewModel(state: state, loadMoviesUseCase: loadMoviesUseCase, lastPageValidationUseCase: lastPageValidationUseCase, imageDataUseCase: imageDataUseCase)
         let controller = MoviesViewController(viewModel: moviesViewModel, coordinator: coordinator)
         controller.title = "\(itemMoviesGenresViewModel.name)"

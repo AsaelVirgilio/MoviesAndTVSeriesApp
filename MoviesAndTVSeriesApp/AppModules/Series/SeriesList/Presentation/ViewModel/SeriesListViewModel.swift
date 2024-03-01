@@ -10,13 +10,18 @@ import Foundation
 final class SeriesListViewModel: ObservableObject {
     
     private var listUseCase: LoadSeriesListUseCaseType
+    var imageDataUseCase: ImageDataUseCaseType
+    
     @Published var series: [Serie] = []
     @Published var showLoadingSpinner: Bool = false
     @Published var showErrorMessage: String?
     
     init(
+        imageDataUseCase: ImageDataUseCaseType,
         listUseCase: LoadSeriesListUseCaseType
     ) {
+        
+        self.imageDataUseCase = imageDataUseCase
         self.listUseCase = listUseCase
     }
     
@@ -44,5 +49,7 @@ final class SeriesListViewModel: ObservableObject {
             
         }
     }
+    
+    
     
 }

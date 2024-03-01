@@ -10,15 +10,12 @@ import SwiftUI
 struct SeriesListView: ViewControllable {
     
     @ObservedObject var viewModel: SeriesListViewModel
-    var imageDataUseCase: ImageDataUseCaseType
     var holder: NavStackHolder
     
     init(viewModel: SeriesListViewModel,
-         imageDataUseCase: ImageDataUseCaseType,
          holder: NavStackHolder
     ) {
         self.viewModel = viewModel
-        self.imageDataUseCase = imageDataUseCase
         self.holder = holder
     }
     
@@ -39,7 +36,7 @@ struct SeriesListView: ViewControllable {
                                     NavigationLink {
                                         Text("----> serie \(serie.originalName)")
                                     } label: {
-                                        SeriesListItemView(serie: serie, dataImageUseCase: imageDataUseCase)
+                                        
                                     }
                                 }
                             }

@@ -28,7 +28,7 @@ final class MoviesViewController: UITableViewController {
     ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .insetGrouped)
     }
     
     required init?(coder: NSCoder) {

@@ -1,5 +1,5 @@
 //
-//  SeriesListItemView.swift
+//  ItemSeriesListView.swift
 //  MoviesAndTVSeriesApp
 //
 //  Created by Asael Virgilio on 21/02/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SeriesListItemView: View {
+struct ItemSeriesListView: View {
     let serie: Serie
     var dataImageUseCase: ImageDataUseCaseType
     

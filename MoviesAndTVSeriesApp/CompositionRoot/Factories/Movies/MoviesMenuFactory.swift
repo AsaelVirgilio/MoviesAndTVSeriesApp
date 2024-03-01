@@ -56,7 +56,7 @@ struct MoviesMenuFactory: MoviesMenuFactoryType, ItemHomeMenuFactory {
     {
         
         let factory = MoviesListFactory(pageNum: 1, itemMoviesGenresViewModel: genre)
-        return MoviesListCoordinator(navigation: navigation,
+        return MoviesListCoordinator(navigation: navigation ,
                                      moviesFactory: factory,
                                      parentCoordinator: parentCoordinator)
     }

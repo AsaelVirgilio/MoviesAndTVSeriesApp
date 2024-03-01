@@ -12,20 +12,38 @@ struct SeriesCard: View {
     let title: String
     
     var body: some View {
-        ZStack {
+        VStack {
             Image(title, bundle: nil)
                 .resizable()
                 .scaledToFill()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: CGFloat(150), height: CGFloat(150), alignment: .center)
+//                .scaledToFit()
+                .mask(RoundedRectangle(cornerRadius: 13))
+                .overlay (
+                    OverlayForImage(name: title), 
+                    alignment: Alignment(horizontal: .leading, vertical: .bottom)
+                        
+                )
+//                .aspectRatio(contentMode: .fit)
+                .frame(width: 150, height: 150)
             
-            Text(title)
-                .font(.title2)
         }
         
     }
 }
 
+struct OverlayForImage: View {
+    var name: String
+    
+    var body: some View {
+        ZStack {
+            Label(name, systemImage: "" )
+                .foregroundColor(.white)
+                .font(.system(size: 20))
+                .fontWeight(.semibold)
+        }
+        .padding(5)
+    }
+}
 //#Preview {
 //    SeriesCard()
 //}

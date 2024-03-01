@@ -33,8 +33,10 @@ final class SeriesCollectionCell: SwiftUICollectionViewCell<SeriesCard> {
         }
     
     private func configUI() {
-        
-        
+//        backgroundColor = .blue
+//        translatesAutoresizingMaskIntoConstraints = false
+//        widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
     override func prepareForReuse() {

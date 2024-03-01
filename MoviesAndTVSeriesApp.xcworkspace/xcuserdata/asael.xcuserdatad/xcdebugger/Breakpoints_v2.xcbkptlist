@@ -53,64 +53,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9F1C232D-49DD-4B41-8764-B4D026E94F26"
+            uuid = "D863882F-0536-4573-8CE7-E40F9461ED40"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesAndTVSeriesApp/AppModules/Series/SeriesList/Domain/UsesCase/LoadSeriesListUseCase.swift"
+            filePath = "MoviesAndTVSeriesApp/CompositionRoot/Coordinators/Movies/MovieDetailCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "execute()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9F1C232D-49DD-4B41-8764-B4D026E94F26 - 39ef9f85e0b19ecc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MoviesAndTVSeriesApp.LoadSeriesListUseCase.execute() async -&gt; Swift.Result&lt;Swift.Array&lt;MoviesAndTVSeriesApp.Serie&gt;, Swift.Error&gt;"
-                  moduleName = "MoviesAndTVSeriesApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asael/Documents/Swift/Desarrollos/06-CleanArchitecture/MoviesAndTVSeriesApp/MoviesAndTVSeriesApp/AppModules/Series/SeriesList/Domain/UsesCase/LoadSeriesListUseCase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "96">
-               </Location>
-               <Location
-                  uuid = "9F1C232D-49DD-4B41-8764-B4D026E94F26 - 8824bf006194d8ce"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for MoviesAndTVSeriesApp.LoadSeriesListUseCase.execute() async -&gt; Swift.Result&lt;Swift.Array&lt;MoviesAndTVSeriesApp.Serie&gt;, Swift.Error&gt;"
-                  moduleName = "MoviesAndTVSeriesApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asael/Documents/Swift/Desarrollos/06-CleanArchitecture/MoviesAndTVSeriesApp/MoviesAndTVSeriesApp/AppModules/Series/SeriesList/Domain/UsesCase/LoadSeriesListUseCase.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "180">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DDBF4CA7-9730-44D9-971A-F67E067180F0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoviesAndTVSeriesApp/AppModules/Series/SeriesList/Domain/UsesCase/LoadSeriesListUseCase.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "execute()"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "start()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

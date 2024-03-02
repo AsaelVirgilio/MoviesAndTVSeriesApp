@@ -26,20 +26,33 @@ struct LoadSearchMediaUseCase: LoadSearchMediaUseCaseType {
     
     mutating func execute() async -> Result<[SearchResults], Error>{
         do {
+            
             pageNum += 1
             let response = try await searchMediaRepository.fetchSearchMediaResults(pageNum: pageNum)
+            let results = response.results
+            let numPages = response.pages
             
-            repositoryResult = response.results
-            
-            while pageNum < response.pages {
-                pageNum += 1
-                let repository = try await searchMediaRepository.fetchSearchMediaResults(pageNum: pageNum)
-                repositoryResult.append(contentsOf: repository.results)
+            if results.count > 0 {
+                    
+                repositoryResult = results
+                
+                if numPages > 1 {
+                    
+                    while pageNum < numPages {
+                        pageNum += 1
+                        let repository = try await searchMediaRepository.fetchSearchMediaResults(pageNum: pageNum)
+                        repositoryResult.append(contentsOf: repository.results)
+                        print("----> pageNum \(pageNum) -- paginas \(numPages) -- elements \(results.count)")
+                    }
+                }
+            } else {
+                //no hay coincidencias
+                print("----> Sin coincidencias")
             }
             
             return .success(repositoryResult)
             
-        }catch {
+        } catch {
             return .failure(error)
         }
     }

@@ -11,8 +11,10 @@ struct LoadFilteredMoviesUseCase: LoadMoviesUseCaseType {
     private var moviesRepository: MoviesRepositoryType
     private var pageNum: Int
     private var idGenre: Int
+    private var numElements: Int = 1
     
     var repositoryResult: [Movie] = []
+    var filteredResult: [Movie] = []
     
     init(moviesRepository: MoviesRepositoryType,
          pageNum: Int,
@@ -25,17 +27,24 @@ struct LoadFilteredMoviesUseCase: LoadMoviesUseCaseType {
     
     mutating func execute() async -> Result<[Movie], Error> {
         do {
-            while repositoryResult.count < 21 {
+            
+            filteredResult.removeAll()
+            numElements = 1
+            repositoryResult.removeAll()
+            
+            while (numElements % 20) != 0 {
                 
                 pageNum += 1
-                print("-----> count \(repositoryResult.count) ---- page \(pageNum) --- genre \(idGenre)")
                 
-                repositoryResult = try await moviesRepository.fetchMovies(pageNum: pageNum)
-                repositoryResult.append(contentsOf: repositoryResult.filter { $0.genreIDS.contains(idGenre)})
+                let movies = try await moviesRepository.fetchMovies(pageNum: pageNum)
+                filteredResult.append(contentsOf: movies.filter { $0.genreIDS.contains(idGenre) })
+                
+                numElements = filteredResult.count == 0 ? 1 : filteredResult.count
                 
             }
             
-            return .success(repositoryResult)
+            repositoryResult.append(contentsOf: filteredResult)
+            return .success(filteredResult)
             
         }catch {
             return .failure(error)

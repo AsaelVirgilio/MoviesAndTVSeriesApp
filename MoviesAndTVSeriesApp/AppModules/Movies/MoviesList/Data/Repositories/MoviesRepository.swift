@@ -14,8 +14,9 @@ struct MoviesRepository: MoviesRepositoryType {
     
     mutating func fetchMovies(pageNum: Int) async throws -> [Movie] {
         
-        let moviesList = try await remoteService.request(url: url, type: MoviesDTO.self)
         url = URL(string: PathLocalized.createURL(path: .moviesTrending, id: pageNum))
+        let moviesList = try await remoteService.request(url: url, type: MoviesDTO.self)
+        
         return moviesList.toDomain()
         
     }

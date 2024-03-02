@@ -30,13 +30,25 @@ struct SearchMovieFactory: SearchMovieFactoryType {
         let idGenre = dicInfo["idGenre"] as? Int ?? 0
         
         let localDataImageService = LocalDataImageService()
-        let searchMediaRepository = SearchMediaRepository(apiService: apiService, idGenre: idGenre, keyword: keyword)
+        let searchMediaRepository = SearchMediaRepository(apiService: apiService, keyword: keyword)
         let imageDataRepository = ImageDataRepository(remoteDataService: apiService, localDataCache: localDataImageService)
         let imageDataUseCase = ImageDataUseCase(imageDataRepository: imageDataRepository)
-        let loadSearchMediaUseCase = LoadSearchMediaUseCase(searchMediaRepository: searchMediaRepository, pageNum: 0)
+        
+        let loadSearchMediaUseCase = makeLoadSearchMediaUseCase(idGenre: idGenre, searchMediaRepository: searchMediaRepository)
         let searchMediaViewModel = SearchMediaViewModel(state: state, loadSearchUseCase: loadSearchMediaUseCase, lastPageValidationUseCase: lastPageValidationUseCase, imageDataUseCase: imageDataUseCase)
         let controller = SearchMediaViewController(viewModel: searchMediaViewModel, coordinator: coordinator)
         return controller
+    }
+    
+    private func makeLoadSearchMediaUseCase(idGenre: Int, searchMediaRepository: SearchMediaRepositoryType) -> LoadSearchMediaUseCaseType {
+        
+        return idGenre == AppLocalized.allGenresId
+        ?
+        LoadSearchMediaUseCase(searchMediaRepository: searchMediaRepository, pageNum: 0)
+        :
+        LoadFilteredSearchMediaUseCase(idGenre: idGenre,
+                                       searchMediaRepository: searchMediaRepository,
+                                       pageNum: 0)
     }
     
     func makeMovieDetailCoordinator(

@@ -107,11 +107,6 @@ final class MovieDetailViewController: UIViewController {
         stateController()
         configUserInterface()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        coordinator.didFinishDetail()
-    }
     //MARK: - Helpers
     private func configUserInterface() {
         view.backgroundColor = .systemBackground

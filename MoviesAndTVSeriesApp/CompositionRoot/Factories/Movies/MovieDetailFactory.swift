@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import youtube_ios_player_helper_swift
 
 protocol MovieDetailFactoryType {
     func makeMovieDetailModule(coordinator: MovieDetailViewControllerCoordinator) -> UIViewController
@@ -21,13 +22,15 @@ struct MovieDetailFactory: MovieDetailFactoryType {
     func makeMovieDetailModule(coordinator: MovieDetailViewControllerCoordinator) -> UIViewController {
         
         let state = PassthroughSubject<StateController, Never>()
-        let apiService = APIClientService()
+        let apiServiceCast = APIClientService()
+        let apiServiceVideo = APIClientService()
+        let apiServiceRepository = APIClientService()
         let localDataImageService = LocalDataImageService()
         let movieDetailRepository = MovieDetailRepository()
         let urlVideos = PathLocalized.createURL(path: .moviesTrailers, id: movie.id)
         let urlCast = PathLocalized.createURL(path: .movieCredits, id: movie.id)
         
-        let imageDataRepository = ImageDataRepository(remoteDataService: apiService, localDataCache: localDataImageService)
+        let imageDataRepository = ImageDataRepository(remoteDataService: apiServiceRepository, localDataCache: localDataImageService)
         let imageDataUseCase = ImageDataUseCase(imageDataRepository: imageDataRepository)
         let loadMovieDetailUseCase = LoadMovieDetailUseCase(movieDetailRepository: movieDetailRepository, movie: movie)
         let movieDetailViewModel = MovieDetailViewModel(
@@ -38,7 +41,7 @@ struct MovieDetailFactory: MovieDetailFactoryType {
         
         //MARK: - VideoTrailerViewController
         let videoTrailerRepository = VideoTrailerRepository(
-            remoteService: apiService,
+            remoteService: apiServiceVideo,
             url: urlVideos)
         let loadVideoTrailerUseCase = LoadVideoTrailerUseCase(
             videoTrailerRepository: videoTrailerRepository)
@@ -46,12 +49,12 @@ struct MovieDetailFactory: MovieDetailFactoryType {
             state: state,
             loadVideoUseCase: loadVideoTrailerUseCase)
         let videoTrailerViewController = VideoTrailerViewController(
-            coordinator: coordinator,
+            player: YTPlayerView(), coordinator: coordinator,
             viewModel: videoTrailerViewModel)
         
         //MARK: - CastViewController
         
-        let castRepository = CastRepository(remoteService: apiService, urlString: urlCast)
+        let castRepository = CastRepository(remoteService: apiServiceCast, urlString: urlCast)
         let loadCastUseCase = LoadCastUseCase(castRepository: castRepository)
         let castViewModel = CastViewModel(state: state, loadCastUseCase: loadCastUseCase, imageDataUseCase: imageDataUseCase)
         let castViewController = CastViewController(collectionViewLayout: makeSectionLayout(), viewModel: castViewModel, coordinator: coordinator)
@@ -77,8 +80,8 @@ struct MovieDetailFactory: MovieDetailFactoryType {
             section.orthogonalScrollingBehavior = .groupPagingCentered
             section.interGroupSpacing = 10
             section.contentInsets = .init(top: 0, leading: 10, bottom: 30, trailing: 10)
-//            section.boundarySupplementaryItems = [supplementaryHeaderItem()]
-            section.supplementariesFollowContentInsets = false
+            section.boundarySupplementaryItems = [supplementaryHeaderItem()]
+//            section.supplementariesFollowContentInsets = false
             return section
         }
     }

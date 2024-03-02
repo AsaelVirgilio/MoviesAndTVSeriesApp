@@ -42,7 +42,7 @@ final class VideoTrailerViewModel: VideoTrailerViewModelType {
     }
     
     func getItemVideoViewModel(row: Int) -> ItemVideoTrailerViewModel {
-        makeItemVideoViewModel(row: row)
+           makeItemVideoViewModel(row: row)
     }
     
     private func loadVideosUseCase() async {
@@ -64,7 +64,7 @@ final class VideoTrailerViewModel: VideoTrailerViewModelType {
     
     private func makeItemVideoViewModel(row: Int) -> ItemVideoTrailerViewModel {
         var video: Video = Video(name: "Default",
-                                 key: "",
+                                 key: "Hves0kHZWFE",
                                  site: "",
                                  size: 0,
                                  type: "",

@@ -37,32 +37,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D441FF39-5724-46E5-883E-3EA4AFAFDD57"
+            uuid = "B42BFA01-72E0-4D3F-9457-59BDA8BA40A9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesAndTVSeriesApp/CompositionRoot/Coordinators/Navigation/Navigation+UINavigationControllerDelegate.swift"
+            filePath = "MoviesAndTVSeriesApp/Common/SearchItemMedia/Domain/UseCases/LoadFilteredSearchMediaUseCase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "navigationController(_:didShow:animated:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D863882F-0536-4573-8CE7-E40F9461ED40"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoviesAndTVSeriesApp/CompositionRoot/Coordinators/Movies/MovieDetailCoordinator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "start()"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "execute()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -43,15 +43,21 @@ struct MoviesListFactory: ItemHomeMenuFactory, MoviesListFactoryType {
             remoteService: apiClient,
             url: url
         )
-        let loadMoviesUseCase = LoadMoviesUseCase(
-            moviesRepository: moviesRepository,
-            pageNum: 0,
-            idGenre: itemMoviesGenresViewModel.idGenre
-        )
+        let loadMoviesUseCase = makeLoadMoviesUseCase(
+            idGenre: itemMoviesGenresViewModel.idGenre,
+            moviesRepository: moviesRepository)
         let moviesViewModel = MoviesViewModel(state: state, loadMoviesUseCase: loadMoviesUseCase, lastPageValidationUseCase: lastPageValidationUseCase, imageDataUseCase: imageDataUseCase)
         let controller = MoviesViewController(viewModel: moviesViewModel, coordinator: coordinator)
         controller.title = "\(itemMoviesGenresViewModel.name)"
         return controller
+    }
+    
+    private func makeLoadMoviesUseCase(idGenre: Int, moviesRepository: MoviesRepositoryType) -> LoadMoviesUseCaseType {
+        return idGenre == AppLocalized.allGenresId
+        ?
+        LoadMoviesUseCase(moviesRepository: moviesRepository, pageNum: 0)
+        :
+        LoadFilteredMoviesUseCase(moviesRepository: moviesRepository, pageNum: 0, idGenre: itemMoviesGenresViewModel.idGenre)
     }
     
     func makeMovieDetailCoordinator(navigation: NavigationType, movie: Movie, parentCoordinator: ParentCoordinator) -> CoordinatorType {

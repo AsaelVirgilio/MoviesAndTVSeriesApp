@@ -20,9 +20,12 @@ final class VideoTrailerViewController: UIViewController {
     private let coordinator: VideoTrailerViewControllerCoordinator
     private let viewModel: VideoTrailerViewModelType
     private var cancellables = Set<AnyCancellable>()
+    private var player: YTPlayerView
     
-    init(coordinator: VideoTrailerViewControllerCoordinator,
+    init(player: YTPlayerView,
+         coordinator: VideoTrailerViewControllerCoordinator,
          viewModel: VideoTrailerViewModelType) {
+        self.player = player
         self.coordinator = coordinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -31,12 +34,6 @@ final class VideoTrailerViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private let player: YTPlayerView = {
-        let player = YTPlayerView()
-        player.translatesAutoresizingMaskIntoConstraints = false
-        return player
-    }()
     //MARK: - Life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +44,8 @@ final class VideoTrailerViewController: UIViewController {
     
     //MARK: - Helpers
     private func configUserInterface() {
-        player.delegate = self
-        
+//        player.delegate = self
+        player.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(player)
         
         NSLayoutConstraint.activate([
@@ -70,7 +67,9 @@ final class VideoTrailerViewController: UIViewController {
                 self.hideSpinner()
                 switch videos {
                 case .success:
-                    self.loadVideo()
+                    Task{
+                     await self.loadVideo()
+                    }
                 case .loading:
                     self.showSpinner()
                 case .fail(error: let error):
@@ -81,10 +80,10 @@ final class VideoTrailerViewController: UIViewController {
         
     }
     //MARK: - Actions
-    
-    private func loadVideo() {
-        let video = viewModel.getItemVideoViewModel(row: 0)
-        _ = player.load(videoId: video.key, playerVars: ["playsinline": "0"])
+    private func loadVideo() async {
+            let video = viewModel.getItemVideoViewModel(row: 0)
+            try? await Task.sleep(nanoseconds: UInt64(0.6) * 1_000_000_000)
+            _ = player.load(videoId: video.key, playerVars: ["playsinline": "0"])
     }
     
 }

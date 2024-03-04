@@ -33,20 +33,20 @@ struct SeriesMenuFactory: SeriesMenuFactoryType {
             viewModel: viewModel,
             coordinator: coordinator
         )
+        controller.navigationItem.title = AppLocalized.seriesTapTitle
         return controller
     }
     
     private func makeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let layoutWidth = (ViewValues.widthScreen - ViewValues.doublePadding ) / ViewValues.multiplierTwo
-        let layoutHeight = (ViewValues.widthScreen  - ViewValues.doublePadding ) / ViewValues.multiplierTwo
+        let layoutHeight = (ViewValues.widthScreen - ViewValues.doublePadding ) / ViewValues.multiplierTwo
         layout.itemSize = CGSize(width: layoutWidth, height: layoutHeight)
         layout.minimumLineSpacing = .zero
         layout.minimumInteritemSpacing = .zero
         layout.sectionInset = UIEdgeInsets(top: .zero, left: 10, bottom: .zero, right: 10)
         return layout
     }
-    
     func makeTabBarItem(navigation: NavigationType) {
         makeItemHomeMenu(navigation: navigation, title: AppLocalized.seriesTapTitle, image: AppLocalized.seriesTapIcon)
     }

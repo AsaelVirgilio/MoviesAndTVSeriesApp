@@ -15,15 +15,14 @@ struct SeriesCard: View {
         VStack {
             Image(title, bundle: nil)
                 .resizable()
-                .scaledToFill()
-//                .scaledToFit()
+                .scaledToFit()
                 .mask(RoundedRectangle(cornerRadius: 13))
                 .overlay (
                     OverlayForImage(name: title), 
                     alignment: Alignment(horizontal: .leading, vertical: .bottom)
-                        
                 )
-//                .aspectRatio(contentMode: .fit)
+            .clipped()
+                .aspectRatio(contentMode: .fit)
                 .frame(width: 150, height: 150)
             
         }

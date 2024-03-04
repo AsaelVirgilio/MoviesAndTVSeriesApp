@@ -8,7 +8,7 @@
 extension SearchMediaDTO {
     
     func toDomain() -> (pages: Int, results: [SearchResults]){
-//        var moviesFiltered = results
+        var moviesFiltered = results
 //        
 //        if idGenre != AppLocalized.allGenresId {
 //            
@@ -18,7 +18,7 @@ extension SearchMediaDTO {
 //            
 //        }
         let totalPages = totalPages
-        return (totalPages, results)
+        return (totalPages, moviesFiltered)
         
     }
 }

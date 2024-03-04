@@ -186,6 +186,7 @@
 		F0AA24DB2B8FDAA500E336B0 /* SeriesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA24DA2B8FDAA500E336B0 /* SeriesListCoordinator.swift */; };
 		F0AA25232B92AD4100E336B0 /* LoadFilteredMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA25222B92AD4100E336B0 /* LoadFilteredMoviesUseCase.swift */; };
 		F0EF74962B92CEAF000E3173 /* LoadFilteredSearchMediaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EF74952B92CEAF000E3173 /* LoadFilteredSearchMediaUseCase.swift */; };
+		F0EF74982B93DF09000E3173 /* FlowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EF74972B93DF09000E3173 /* FlowError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -398,6 +399,7 @@
 		F0AA24DA2B8FDAA500E336B0 /* SeriesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListCoordinator.swift; sourceTree = "<group>"; };
 		F0AA25222B92AD4100E336B0 /* LoadFilteredMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFilteredMoviesUseCase.swift; sourceTree = "<group>"; };
 		F0EF74952B92CEAF000E3173 /* LoadFilteredSearchMediaUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFilteredSearchMediaUseCase.swift; sourceTree = "<group>"; };
+		F0EF74972B93DF09000E3173 /* FlowError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1581,6 +1583,7 @@
 			children = (
 				F0A867702B5A091600801F89 /* LoginError.swift */,
 				F0A867AD2B5B734A00801F89 /* ApiError.swift */,
+				F0EF74972B93DF09000E3173 /* FlowError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -2307,6 +2310,7 @@
 				F038678E2B731E8D00117E23 /* SearchMediaControllerCoordinator.swift in Sources */,
 				F00BFA4E2B61CF3F003A7AFB /* RemoteImageDataServiceType.swift in Sources */,
 				F0A8679A2B5B69F300801F89 /* SeriesGenresDTO.swift in Sources */,
+				F0EF74982B93DF09000E3173 /* FlowError.swift in Sources */,
 				F0A867C52B5C377E00801F89 /* ItemMoviesGenresCell.swift in Sources */,
 				F03C7C962B6C627E009F4579 /* SelectedPhotoCollectionCell.swift in Sources */,
 				F00BFAA72B6827CC003A7AFB /* LoadCastUseCase.swift in Sources */,

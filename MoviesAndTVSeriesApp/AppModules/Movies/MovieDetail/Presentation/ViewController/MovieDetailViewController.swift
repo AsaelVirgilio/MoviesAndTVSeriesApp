@@ -79,7 +79,7 @@ final class MovieDetailViewController: UIViewController {
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.sizeToFit()
-        label.preferredMaxLayoutWidth = 200
+//        label.preferredMaxLayoutWidth = 200
         return label
     }()
     
@@ -168,6 +168,7 @@ final class MovieDetailViewController: UIViewController {
             .sink { [weak self] result in
                 guard let self = self else { return }
                 self.hideSpinner()
+                print("----> Se oculta spinner de detail")
                 switch result {
                 case .success:
                     self.configData()

@@ -48,6 +48,8 @@ final class ItemMovieTableViewCell: UITableViewCell {
         label.numberOfLines = 1
         label.font = UIFont.preferredFont(forTextStyle: .headline, compatibleWith: UITraitCollection(legibilityWeight: .regular))
         label.text = "Movie release"
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -109,11 +111,11 @@ final class ItemMovieTableViewCell: UITableViewCell {
             
             labelRelease.leadingAnchor.constraint(equalTo: imageMovie.trailingAnchor, constant: 10),
             labelRelease.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor, constant: -5),
-            labelRelease.widthAnchor.constraint(equalToConstant: 100),
+            labelRelease.widthAnchor.constraint(equalToConstant: 90),
             
             labelRate.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -5),
             labelRate.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor, constant: -5),
-            labelRate.widthAnchor.constraint(equalToConstant: 100)
+            labelRate.widthAnchor.constraint(equalToConstant: 80)
             
         ])
         

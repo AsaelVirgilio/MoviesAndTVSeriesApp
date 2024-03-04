@@ -34,6 +34,13 @@ struct LoadFilteredSearchMediaUseCase: LoadSearchMediaUseCaseType {
             if results.count > 0 {
                     
                 repositoryResult = results
+                filteredResult = []
+                
+                let filtered = repositoryResult.filter { $0.genreIDS?.contains(idGenre) as? Bool ?? false }
+                filteredResult = filtered
+                
+                
+                print("----> pageNum \(pageNum) -- paginas \(numPages) -- elements \(repositoryResult.count) -- filtered \(filteredResult.count) -- idGenre \(idGenre) -- results filtered \(filteredResult)")
                 
                 if numPages > 1 {
                     
@@ -42,15 +49,17 @@ struct LoadFilteredSearchMediaUseCase: LoadSearchMediaUseCaseType {
                         let repository = try await searchMediaRepository.fetchSearchMediaResults(pageNum: pageNum)
                         let filtered = repository.results.filter { $0.genreIDS?.contains(idGenre) as? Bool ?? false }
                         filteredResult.append(contentsOf: filtered)
-                        print("----> pageNum \(pageNum) -- paginas \(numPages) -- elements \(results.count) -- filtered \(filteredResult.count)")
+                        print("----> pageNum \(pageNum) -- paginas \(numPages) -- elements \(results.count) -- filtered \(filteredResult.count) -- idGenre \(idGenre) -- results filtered ")
                     }
                 }
+                
+                repositoryResult.append(contentsOf: filteredResult)
+                return .success(repositoryResult)
+                
             } else {
                 //no hay coincidencias
-                print("----> Sin coincidencias")
+                return .failure(FlowError.noResultsError)
             }
-            repositoryResult.append(contentsOf: filteredResult)
-            return .success(repositoryResult)
             
         }catch {
             return .failure(error)

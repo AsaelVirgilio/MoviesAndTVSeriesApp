@@ -48,8 +48,9 @@ struct MovieDetailFactory: MovieDetailFactoryType {
         let videoTrailerViewModel = VideoTrailerViewModel(
             state: state,
             loadVideoUseCase: loadVideoTrailerUseCase)
+        let videoPlayer = VideoPlayerYTPlayerView()
         let videoTrailerViewController = VideoTrailerViewController(
-            player: YTPlayerView(), coordinator: coordinator,
+            videoPlayer: videoPlayer, coordinator: coordinator,
             viewModel: videoTrailerViewModel)
         
         //MARK: - CastViewController
@@ -63,7 +64,8 @@ struct MovieDetailFactory: MovieDetailFactoryType {
         let controller = MovieDetailViewController(
             videoTrailerViewController: videoTrailerViewController,
             viewModel: movieDetailViewModel,
-            coordinator: coordinator, castViewController: castViewController
+            coordinator: coordinator,
+            castViewController: castViewController
         )
         return controller
     }

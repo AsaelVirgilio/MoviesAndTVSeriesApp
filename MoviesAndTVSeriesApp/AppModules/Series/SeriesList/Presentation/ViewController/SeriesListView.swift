@@ -11,10 +11,13 @@ struct SeriesListView: ViewControllable {
     
     @ObservedObject var viewModel: SeriesListViewModel
     var holder: NavStackHolder
+    var dataImageUseCase: ImageDataUseCaseType
     
-    init(viewModel: SeriesListViewModel,
+    init(dataImageUseCase: ImageDataUseCaseType,
+        viewModel: SeriesListViewModel,
          holder: NavStackHolder
     ) {
+        self.dataImageUseCase = dataImageUseCase
         self.viewModel = viewModel
         self.holder = holder
     }
@@ -36,7 +39,7 @@ struct SeriesListView: ViewControllable {
                                     NavigationLink {
                                         Text("----> serie \(serie.originalName)")
                                     } label: {
-                                        
+                                        ItemSeriesListView(serie: serie, dataImageUseCase: dataImageUseCase)
                                     }
                                 }
                             }

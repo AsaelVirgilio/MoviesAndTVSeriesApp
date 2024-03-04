@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ItemSeriesListView: View {
     let serie: Serie
@@ -46,21 +47,65 @@ struct ItemSeriesListView: View {
     }
     
     var body: some View {
-        VStack {
-//            HStack {
-//            Image(UIImage(data: getImageData() ?? Data()))
-//                    .resizable()
-//                    .scaledToFill()
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: CGFloat(200), height: CGFloat(100), alignment: .center)
+        HStack {
+            Image(uiImage: setImage())
+                .resizable()
+                .scaledToFit()
+                .mask(RoundedRectangle(cornerRadius: 13))
+            .clipped()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100, height: 100)
             
-                Text(serie.originalName)
-                    .font(.title3)
-                    .lineLimit(1)
-            
+            VStack {
                 Text(serie.name)
-                    .font(.headline)
-//            }
+                    .font(.title2)
+                    .lineLimit(0)
+                
+                HStack {
+                    Text(DateFormater.formatDate(date: serie.firstAirDate))
+                        .font(.title3)
+                        .frame(width: 100)
+                        
+                    Text(iconVote.rawValue)
+                        .font(.headline)
+//                        .fontWidth(.compressed)
+                        .frame(width: 100)
+                        .multilineTextAlignment(.trailing)
+                }
+//                .padding()
+            }
+//            .padding()
         }
     }
+    
+    @MainActor private func setImage() -> UIImage {
+        var image: UIImage = UIImage()
+        
+        if let data = imageData {
+            image = setImageFromData(data: data)
+        }
+        else{
+            var dataImage: Data?
+            Task {
+                dataImage = await getImageData()
+            }
+            image = setImageFromData(data: dataImage)
+        }
+        return image
+    }
+    
+    func setImageFromData( data: Data?) -> UIImage {
+        if let data = data {
+            if let image = UIImage(data: data) {
+                return image
+            }
+        }
+        return UIImage(named: "default") ?? UIImage()
+    }
+    
+    func addDefaultImage() -> UIImage {
+        return UIImage(named: "default") ?? UIImage()
+        
+    }
 }
+

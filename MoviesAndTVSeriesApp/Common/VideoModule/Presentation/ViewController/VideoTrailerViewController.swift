@@ -7,10 +7,31 @@
 
 import Combine
 import UIKit
-import youtube_ios_player_helper_swift
 
 protocol VideoTrailerViewControllerCoordinator {
     func didSelectExit()
+}
+protocol VideoPlayerType: VideoPlayerYTPlayerViewType {
+    func loadVideo(key: String)
+}
+
+import youtube_ios_player_helper_swift
+protocol VideoPlayerYTPlayerViewType {
+    func getPlayer() -> YTPlayerView
+}
+
+public class VideoPlayerYTPlayerView: VideoPlayerType  {
+    
+    private var player: YTPlayerView = YTPlayerView()
+    
+    func getPlayer() -> YTPlayerView {
+        player
+    }
+    
+    func loadVideo(key: String) {
+        _ = player.load(videoId: key, playerVars: ["playsinline": "0"])
+    }
+    
 }
 
 final class VideoTrailerViewController: UIViewController {
@@ -20,12 +41,12 @@ final class VideoTrailerViewController: UIViewController {
     private let coordinator: VideoTrailerViewControllerCoordinator
     private let viewModel: VideoTrailerViewModelType
     private var cancellables = Set<AnyCancellable>()
-    private var player: YTPlayerView
+    private var videoPlayer: VideoPlayerType
     
-    init(player: YTPlayerView,
+    init(videoPlayer: VideoPlayerType,
          coordinator: VideoTrailerViewControllerCoordinator,
          viewModel: VideoTrailerViewModelType) {
-        self.player = player
+        self.videoPlayer = videoPlayer
         self.coordinator = coordinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -45,14 +66,15 @@ final class VideoTrailerViewController: UIViewController {
     //MARK: - Helpers
     private func configUserInterface() {
 //        player.delegate = self
-        player.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(player)
+        
+        videoPlayer.getPlayer().translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(videoPlayer.getPlayer())
         
         NSLayoutConstraint.activate([
-            player.topAnchor.constraint(equalTo: view.topAnchor),
-            player.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            player.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            player.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            videoPlayer.getPlayer().topAnchor.constraint(equalTo: view.topAnchor),
+            videoPlayer.getPlayer().leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            videoPlayer.getPlayer().trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            videoPlayer.getPlayer().bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
     }
@@ -65,11 +87,10 @@ final class VideoTrailerViewController: UIViewController {
             .sink { [weak self] videos in
                 guard let self = self else { return }
                 self.hideSpinner()
+                print("----> Se oculta spinner de trailer")
                 switch videos {
                 case .success:
-                    Task{
-                     await self.loadVideo()
-                    }
+                    self.loadVideo()
                 case .loading:
                     self.showSpinner()
                 case .fail(error: let error):
@@ -80,21 +101,14 @@ final class VideoTrailerViewController: UIViewController {
         
     }
     //MARK: - Actions
-    private func loadVideo() async {
-            let video = viewModel.getItemVideoViewModel(row: 0)
-            try? await Task.sleep(nanoseconds: UInt64(0.6) * 1_000_000_000)
-            _ = player.load(videoId: video.key, playerVars: ["playsinline": "0"])
+    func loadVideo() {
+        let video = viewModel.getItemVideoViewModel(row: 0)
+        videoPlayer.loadVideo(key: video.key)
     }
     
 }
 
 //MARK: - Extensions Here
-
-extension VideoTrailerViewController: YTPlayerViewDelegate {
-    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-//        playerView.playVideo()
-    }
-}
 
 extension VideoTrailerViewController: SpinnerDisplayable {}
 extension VideoTrailerViewController: MessageDisplayable {}

@@ -26,6 +26,6 @@ struct SeriesListFactory: SeriesListFactoryType {
         let imageDataUseCase = ImageDataUseCase(imageDataRepository: ImageDataRepository(remoteDataService: remoteImageDataService, localDataCache: localDataImageService))
         let loadSeriesListUseCase = LoadSeriesListUseCase(repositoryList: seriesListRepository)
         let seriesListViewModel = SeriesListViewModel(imageDataUseCase: imageDataUseCase, listUseCase: loadSeriesListUseCase)
-        return SeriesListView(viewModel: seriesListViewModel, holder: holder)
+        return SeriesListView(dataImageUseCase: imageDataUseCase, viewModel: seriesListViewModel, holder: holder)
     }
 }

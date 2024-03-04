@@ -54,6 +54,7 @@ final class CastViewController: UICollectionViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] state in
                 self?.hideSpinner()
+                print("----> Se oculta spinner de cast")
                 switch state {
                 case .success:
                     self?.collectionView.reloadData()

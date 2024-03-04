@@ -42,12 +42,11 @@ struct LoadSearchMediaUseCase: LoadSearchMediaUseCaseType {
                         pageNum += 1
                         let repository = try await searchMediaRepository.fetchSearchMediaResults(pageNum: pageNum)
                         repositoryResult.append(contentsOf: repository.results)
-                        print("----> pageNum \(pageNum) -- paginas \(numPages) -- elements \(results.count)")
                     }
                 }
             } else {
                 //no hay coincidencias
-                print("----> Sin coincidencias")
+                return .failure(FlowError.noResultsError)
             }
             
             return .success(repositoryResult)

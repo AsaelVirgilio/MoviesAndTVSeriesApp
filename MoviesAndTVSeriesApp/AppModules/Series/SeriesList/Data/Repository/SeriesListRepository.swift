@@ -14,7 +14,6 @@ struct SeriesListRepository: SeriesListRepositoryType {
     mutating func fetchFilteredSeries(pageNum: Int) async throws -> [Serie] {
 
         url = URL(string: PathLocalized.createURL(path: .tvTrending, id: pageNum))
-        print("----> \(url)")
         let response = try await apiService.request(url: url, type: SeriesListDTO.self)
         
         return response.toDomain(idGenre: idGenre)

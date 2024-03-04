@@ -36,11 +36,8 @@ struct LoadFilteredSearchMediaUseCase: LoadSearchMediaUseCaseType {
                 repositoryResult = results
                 filteredResult = []
                 
-                let filtered = repositoryResult.filter { $0.genreIDS?.contains(idGenre) as? Bool ?? false }
-                filteredResult = filtered
+                filteredResult = repositoryResult.filter { $0.genreIDS?.contains(idGenre) as? Bool ?? false }
                 
-                
-                print("----> pageNum \(pageNum) -- paginas \(numPages) -- elements \(repositoryResult.count) -- filtered \(filteredResult.count) -- idGenre \(idGenre) -- results filtered \(filteredResult)")
                 
                 if numPages > 1 {
                     
@@ -49,15 +46,17 @@ struct LoadFilteredSearchMediaUseCase: LoadSearchMediaUseCaseType {
                         let repository = try await searchMediaRepository.fetchSearchMediaResults(pageNum: pageNum)
                         let filtered = repository.results.filter { $0.genreIDS?.contains(idGenre) as? Bool ?? false }
                         filteredResult.append(contentsOf: filtered)
-                        print("----> pageNum \(pageNum) -- paginas \(numPages) -- elements \(results.count) -- filtered \(filteredResult.count) -- idGenre \(idGenre) -- results filtered ")
+//                        print("----> pageNum \(pageNum) -- paginas \(numPages) -- elements \(results.count) -- filtered \(filteredResult.count) -- idGenre \(idGenre) --")
                     }
                 }
                 
-                repositoryResult.append(contentsOf: filteredResult)
-                return .success(repositoryResult)
+                if filteredResult.count == 0 {
+                    return .failure(FlowError.noResultsError)
+                }
+                
+                return .success(filteredResult)
                 
             } else {
-                //no hay coincidencias
                 return .failure(FlowError.noResultsError)
             }
             

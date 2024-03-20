@@ -9,9 +9,15 @@ import Foundation
 
 extension PhotosPersonDTO {
     
-    func toDomain() -> [Profile] {
+    func toDomain() -> [PhotosPerson] {
         
-        profiles.filter { $0.filePath != "" }
+        profiles
+            .map { PhotosPerson(aspectRatio: $0.aspectRatio,
+                                height: $0.height,
+                                filePath: $0.filePath,
+                                width: $0.width)
+            }
+            .filter { $0.filePath != "" }
         
     }
     

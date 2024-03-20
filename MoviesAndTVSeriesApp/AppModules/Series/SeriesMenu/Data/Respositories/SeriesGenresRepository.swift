@@ -9,12 +9,12 @@ import Foundation
 struct SeriesGenresRepository: SeriesGenresRepositoryType {
     private(set) var remoteService: APIClientService
     
-    func fetchSeriesGenres() async throws -> [SGenre] {
+    func fetchSeriesGenres() async throws -> [SeriesGenres] {
         let url = URL(string: PathLocalized.createURL(path: .tvGenres))
         
         let series = try await remoteService.request(url: url, type: SeriesGenresDTO.self)
         
-        return series.genres
+        return series.toDomain()
     }
     
 }

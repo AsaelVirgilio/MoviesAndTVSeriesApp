@@ -11,11 +11,11 @@ import Foundation
 // MARK: - CastDTO
 struct CastDTO: Codable {
     let id: Int
-    let cast, crew: [Person]
+    let cast, crew: [PersonDTO]
 }
 
 // MARK: - Cast
-struct Person: Codable {
+struct PersonDTO: Codable {
     let adult: Bool
     let gender, id: Int
     let knownForDepartment, name, originalName: String

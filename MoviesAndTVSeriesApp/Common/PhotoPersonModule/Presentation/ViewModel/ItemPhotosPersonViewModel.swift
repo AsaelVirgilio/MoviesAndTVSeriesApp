@@ -7,7 +7,7 @@
 import Foundation
 
 struct ItemPhotosPersonViewModel {
-    private(set) var photo: Profile
+    private(set) var photo: PhotosPerson
     private(set) var imageDataUseCase: ImageDataUseCaseType
     
     var filePath: String {

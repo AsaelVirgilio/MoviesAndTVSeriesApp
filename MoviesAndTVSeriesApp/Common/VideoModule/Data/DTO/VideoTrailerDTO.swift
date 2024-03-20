@@ -10,11 +10,11 @@ import Foundation
 // MARK: - MovieGenres
 struct VideoTrailerDTO: Codable {
     let id: Int
-    let results: [Video]
+    let results: [VideoDTO]
 }
 
 // MARK: - Result
-struct Video: Codable {
+struct VideoDTO: Codable {
     let name, key: String
     let site: String
     let size: Int

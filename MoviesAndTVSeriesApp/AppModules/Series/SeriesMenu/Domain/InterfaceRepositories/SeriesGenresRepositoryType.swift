@@ -6,5 +6,5 @@
 //
 
 protocol SeriesGenresRepositoryType {
-    func fetchSeriesGenres() async throws -> [SGenre]
+    func fetchSeriesGenres() async throws -> [SeriesGenres]
 }

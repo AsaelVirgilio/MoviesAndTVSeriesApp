@@ -12,14 +12,17 @@ struct SeriesListView: ViewControllable {
     @ObservedObject var viewModel: SeriesListViewModel
     var holder: NavStackHolder
     var dataImageUseCase: ImageDataUseCaseType
+    let createSerieDetailView: CreateSerieDetailView
     
-    init(dataImageUseCase: ImageDataUseCaseType,
+    init(createSerieDetailView: CreateSerieDetailView,
+        dataImageUseCase: ImageDataUseCaseType,
         viewModel: SeriesListViewModel,
          holder: NavStackHolder
     ) {
         self.dataImageUseCase = dataImageUseCase
         self.viewModel = viewModel
         self.holder = holder
+        self.createSerieDetailView = createSerieDetailView
     }
     
     var body: some View {
@@ -35,12 +38,17 @@ struct SeriesListView: ViewControllable {
                     if viewModel.showErrorMessage == nil {
                         NavigationStack {
                             List {
-                                ForEach (viewModel.series, id:  \.id) { serie in
-                                    NavigationLink {
-                                        Text("----> serie \(serie.originalName)")
-                                    } label: {
-                                        ItemSeriesListView(serie: serie, dataImageUseCase: dataImageUseCase)
+                                Section( footer: ProgressView()
+                                    .progressViewStyle(.circular)
+                                ) {
+                                ForEach (viewModel.series, id: \.id) { serie in
+                                        NavigationLink {
+                                            createSerieDetailView.create(serieDetail: serie.serieDetail)
+                                        } label: {
+                                            ItemSeriesListView(serie: serie, dataImageUseCase: dataImageUseCase)
+                                        }
                                     }
+                                    
                                 }
                             }
                         }

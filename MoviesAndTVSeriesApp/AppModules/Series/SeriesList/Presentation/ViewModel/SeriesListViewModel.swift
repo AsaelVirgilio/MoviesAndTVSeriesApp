@@ -7,20 +7,25 @@
 
 import Foundation
 
-final class SeriesListViewModel: ObservableObject {
+class SeriesListViewModel: ObservableObject {
     
     private var listUseCase: LoadSeriesListUseCaseType
     var imageDataUseCase: ImageDataUseCaseType
+    private var lastPageValidationUseCase: LastPageValidationUseCaseType
+
     
     @Published var series: [Serie] = []
     @Published var showLoadingSpinner: Bool = false
     @Published var showErrorMessage: String?
+    var lastPage: Bool {
+        lastPageValidationUseCase.lastPage
+    }
     
-    init(
+    init(lastPageValidationUseCase: LastPageValidationUseCaseType,
         imageDataUseCase: ImageDataUseCaseType,
         listUseCase: LoadSeriesListUseCaseType
     ) {
-        
+        self.lastPageValidationUseCase = lastPageValidationUseCase
         self.imageDataUseCase = imageDataUseCase
         self.listUseCase = listUseCase
     }
@@ -38,6 +43,7 @@ final class SeriesListViewModel: ObservableObject {
                     @MainActor in
                     showLoadingSpinner = false
                     self.series = serie
+//                    checkAndLoadMoreMovies(row: 8)
                 }
                 
             case .failure(let error):
@@ -49,7 +55,11 @@ final class SeriesListViewModel: ObservableObject {
             
         }
     }
-    
+//    
+//    private func checkAndLoadMoreMovies(row: Int) {
+//        lastPageValidationUseCase.updateLastPage(itemsCount: series.count)
+//        lastPageValidationUseCase.checkAndLoadMoreItems(row: row, actualItems: series.count, action: onAppear)
+//    }
     
     
 }

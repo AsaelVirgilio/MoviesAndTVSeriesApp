@@ -9,7 +9,15 @@ import Foundation
 
 extension CastDTO {
     func toDomain() -> [Person] {
-        cast.filter {
+        cast
+            .map { Person(id: $0.id,
+                          name: $0.name,
+                          originalName: $0.originalName,
+                          knownForDepartment: $0.knownForDepartment,
+                          profilePath: $0.profilePath,
+                          character: $0.character)
+            }
+            .filter {
             $0.knownForDepartment == Department.acting.rawValue
         }
     }

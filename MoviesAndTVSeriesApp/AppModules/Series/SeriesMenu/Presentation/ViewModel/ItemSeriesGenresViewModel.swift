@@ -7,7 +7,7 @@
 
 struct ItemSeriesGenresViewModel {
     
-    private(set) var genre: SGenre
+    private(set) var genre: SeriesGenres
     
     var idGenre: Int {
         genre.id

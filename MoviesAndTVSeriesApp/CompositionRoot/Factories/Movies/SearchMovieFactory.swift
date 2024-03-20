@@ -56,7 +56,7 @@ struct SearchMovieFactory: SearchMovieFactoryType {
         movie: SearchResults,
         parentCoordinator: ParentCoordinator
     ) -> CoordinatorType {
-        let movie = Movie(adult: movie.adult,
+        let movie = Movie(
                           backdropPath: movie.backdropPath,
                           id: movie.id,
                           title: movie.title,

@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: - MovieGenres
 struct SeriesGenresDTO: Codable {
-    let genres: [SGenre]
+    let genres: [SGenreDTO]
 }
 
 // MARK: - Genre
-struct SGenre: Codable {
+struct SGenreDTO: Codable {
     let id: Int
     let name: String
 }

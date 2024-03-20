@@ -22,7 +22,7 @@ final class PhotosPersonViewModel: PhotosPersonViewModelType {
     
     private let loadPhotosPersonUseCase: LoadPhotosPersonUseCaseType
     private var imageDataUseCase: ImageDataUseCaseType
-    private var photos: [Profile] = []
+    private var photos: [PhotosPerson] = []
     
     init(state: PassthroughSubject<StateController, Never>,
          loadPhotosPersonUseCase: LoadPhotosPersonUseCaseType,
@@ -46,7 +46,7 @@ final class PhotosPersonViewModel: PhotosPersonViewModelType {
         updateStateUI(result: result)
     }
     
-    private func updateStateUI(result: Result<[Profile], Error>) {
+    private func updateStateUI(result: Result<[PhotosPerson], Error>) {
         
         switch result {
             

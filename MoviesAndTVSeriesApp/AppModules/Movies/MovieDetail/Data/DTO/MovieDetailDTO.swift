@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieDetail {
+struct MovieDetailDTO {
     let id: Int
     let backdropPath: String?
     let originalTitle, overview: String

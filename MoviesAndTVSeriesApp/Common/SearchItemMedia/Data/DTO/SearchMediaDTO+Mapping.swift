@@ -8,15 +8,18 @@
 extension SearchMediaDTO {
     
     func toDomain() -> (pages: Int, results: [SearchResults]){
-        var moviesFiltered = results
-//        
-//        if idGenre != AppLocalized.allGenresId {
-//            
-//            moviesFiltered = results.filter {
-//                $0.genreIDS?.contains(idGenre) as? Bool ?? false
-//            }
-//            
-//        }
+        var moviesFiltered = results.map {
+            SearchResults(backdropPath: $0.backdropPath,
+                          genreIDS: $0.genreIDS,
+                          id: $0.id,
+                          originalLanguage: $0.originalLanguage,
+                          originalTitle: $0.originalTitle,
+                          overview: $0.overview,
+                          posterPath: $0.posterPath,
+                          releaseDate: $0.releaseDate,
+                          title: $0.title,
+                          voteAverage: $0.voteAverage)
+        }
         let totalPages = totalPages
         return (totalPages, moviesFiltered)
         

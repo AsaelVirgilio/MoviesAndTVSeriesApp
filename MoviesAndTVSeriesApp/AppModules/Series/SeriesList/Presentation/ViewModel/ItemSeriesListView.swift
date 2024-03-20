@@ -48,13 +48,14 @@ struct ItemSeriesListView: View {
     
     var body: some View {
         HStack {
-            Image(uiImage: setImage())
-                .resizable()
-                .scaledToFit()
-                .mask(RoundedRectangle(cornerRadius: 13))
+            AsyncImage(url: URL(string: posterPath), content: { $0.resizable()}, placeholder: {
+                Image(uiImage: UIImage(named: "default") ?? UIImage())
+                
+            })
+            .scaledToFit()
             .clipped()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
+            .mask(RoundedRectangle(cornerRadius: 13))
+            .frame(width: 110, height: 120)
             
             VStack {
                 Text(serie.name)

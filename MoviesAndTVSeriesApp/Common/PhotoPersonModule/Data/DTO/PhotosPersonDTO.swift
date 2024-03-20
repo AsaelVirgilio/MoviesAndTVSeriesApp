@@ -11,11 +11,11 @@ import Foundation
 // MARK: - PhotosPersonDTO
 struct PhotosPersonDTO: Codable {
     let id: Int
-    let profiles: [Profile]
+    let profiles: [ProfileDTO]
 }
 
 // MARK: - Profile
-struct Profile: Codable {
+struct ProfileDTO: Codable {
     let aspectRatio: Double
     let height: Int
     let filePath: String

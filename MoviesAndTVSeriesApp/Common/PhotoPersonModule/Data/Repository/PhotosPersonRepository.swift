@@ -10,7 +10,7 @@ struct PhotosPersonRepository: PhotosPersonRepositoryType {
     private(set) var apiService: APIClientServiceType
     private(set) var urlString: String
     
-    func fetchPhotosPerson() async throws -> [Profile] {
+    func fetchPhotosPerson() async throws -> [PhotosPerson] {
         
         let url = URL(string: urlString)
         let response = try await apiService.request(url: url, type: PhotosPersonDTO.self)

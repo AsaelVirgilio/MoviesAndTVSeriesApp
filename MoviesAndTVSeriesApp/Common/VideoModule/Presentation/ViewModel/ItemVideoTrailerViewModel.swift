@@ -17,11 +17,4 @@ struct ItemVideoTrailerViewModel {
     var videoPath: String {
         AppLocalized.videosPath(key: video.key)
     }
-    
-//    let name, key: String
-//    let site: String
-//    let size: Int
-//    let type: String
-//    let official: Bool
-//    let publishedAt, id: String
 }

@@ -20,11 +20,12 @@ final class ListMoviesTest: XCTestCase {
     
     class MoviesRepositoryStub: MoviesRepositoryType {
         
+        
         func fetchMovies(pageNum: Int) async throws -> [Movie] {
             return  [
-                Movie(adult: true, backdropPath: "", id: 1, title: "", originalTitle: "", overview: "", posterPath: "", genreIDS: [80], releaseDate: "", voteAverage: 0.0),
-                Movie(adult: true, backdropPath: "", id: 2, title: "", originalTitle: "", overview: "", posterPath: "", genreIDS: [0], releaseDate: "", voteAverage: 0.0),
-                Movie(adult: true, backdropPath: "", id: 3, title: "", originalTitle: "", overview: "", posterPath: "", genreIDS: [0], releaseDate: "", voteAverage: 0.0),
+                Movie(backdropPath: "", id: 1, title: "", originalTitle: "", overview: "", posterPath: "", genreIDS: [80], releaseDate: "", voteAverage: 0.0),
+                Movie(backdropPath: "", id: 2, title: "", originalTitle: "", overview: "", posterPath: "", genreIDS: [0], releaseDate: "", voteAverage: 0.0),
+                Movie(backdropPath: "", id: 3, title: "", originalTitle: "", overview: "", posterPath: "", genreIDS: [0], releaseDate: "", voteAverage: 0.0),
                 
             ]
             
@@ -33,10 +34,10 @@ final class ListMoviesTest: XCTestCase {
         
     }
 
-    func testExample() async {
+    func test_when_returns_less_than_21_results() async {
         let moviesRepository = MoviesRepositoryStub()
         //Given
-        var sut = LoadMoviesUseCase(moviesRepository: moviesRepository, pageNum: 0, idGenre: 80)
+        var sut = LoadMoviesUseCase(moviesRepository: moviesRepository, pageNum: 0)
         
         let result = await sut.execute()
         
@@ -44,7 +45,7 @@ final class ListMoviesTest: XCTestCase {
             
         case .success(let response):
             let count = response.count
-            let waiting = 21
+            let waiting = 3
             XCTAssertEqual(count, waiting)
             
         case .failure(let error):

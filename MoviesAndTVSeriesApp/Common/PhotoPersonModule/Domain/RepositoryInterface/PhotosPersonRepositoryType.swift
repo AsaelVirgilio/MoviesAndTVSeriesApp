@@ -6,5 +6,5 @@
 //
 
 protocol PhotosPersonRepositoryType {
-    func fetchPhotosPerson() async throws -> [Profile]
+    func fetchPhotosPerson() async throws -> [PhotosPerson]
 }

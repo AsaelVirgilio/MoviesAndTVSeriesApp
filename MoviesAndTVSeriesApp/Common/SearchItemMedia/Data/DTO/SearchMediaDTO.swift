@@ -10,7 +10,7 @@ import Foundation
 // MARK: - SearchMediaDTO
 struct SearchMediaDTO: Codable {
     let page: Int
-    let results: [SearchResults]
+    let results: [SearchResultsDTO]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ struct SearchMediaDTO: Codable {
 }
 
 // MARK: - Result
-struct SearchResults: Codable {
+struct SearchResultsDTO: Codable {
     let adult: Bool
     let backdropPath: String?
     let genreIDS: [Int]?

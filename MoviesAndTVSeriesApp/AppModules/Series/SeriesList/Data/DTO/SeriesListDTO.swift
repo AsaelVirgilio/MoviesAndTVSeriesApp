@@ -10,7 +10,7 @@ import Foundation
 // MARK: - CastDTO
 struct SeriesListDTO: Codable {
     let page: Int
-    let results: [Serie]
+    let results: [SerieDTO]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ struct SeriesListDTO: Codable {
 }
 
 // MARK: - Result
-struct Serie: Codable {
+struct SerieDTO: Codable {
     let adult: Bool
     let backdropPath: String?
     let id: Int

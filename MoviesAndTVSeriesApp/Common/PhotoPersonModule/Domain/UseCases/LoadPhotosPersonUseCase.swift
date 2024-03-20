@@ -6,13 +6,13 @@
 //
 
 protocol LoadPhotosPersonUseCaseType {
-    func execute() async -> Result<[Profile], Error>
+    func execute() async -> Result<[PhotosPerson], Error>
 }
 
 struct LoadPhotosPersonUseCase: LoadPhotosPersonUseCaseType {
     private(set) var photosRepository: PhotosPersonRepositoryType
     
-    func execute() async -> Result<[Profile], Error> {
+    func execute() async -> Result<[PhotosPerson], Error> {
         do {
             let response = try await photosRepository.fetchPhotosPerson()
             return .success(response)

@@ -44,7 +44,7 @@ class SeriesGenresViewModel: ObservableObject {
             
             seriesModel = series.map{ ItemSeriesGenresViewModel(genre: $0)}
             
-            let allSeries = ItemSeriesGenresViewModel(genre: SGenre(id: AppLocalized.allGenresId, name: AppLocalized.allSeriesGenresName))
+            let allSeries = ItemSeriesGenresViewModel(genre: SeriesGenres(id: AppLocalized.allGenresId, name: AppLocalized.allSeriesGenresName))
             
             seriesModel.insert(allSeries, at: 0)
             
